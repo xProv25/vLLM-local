@@ -1,9 +1,12 @@
-# Core vLLM Engine (Stable target 0.6.3)
+# Core vLLM Engine (Target 0.6.3 with PyTorch 2.4.0)
 vllm==0.6.3
+torch==2.4.0
+transformers==4.46.3
+tokenizers==0.20.3
+huggingface-hub==0.36.2
 
 # Faster Hugging Face Model Downloads
 hf-transfer>=0.1.8
-huggingface_hub>=0.25.0
 
 # Client & Benchmarking
 openai>=1.50.0
