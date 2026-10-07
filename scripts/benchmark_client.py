@@ -15,6 +15,10 @@ from typing import Any, Dict, List, Optional
 import urllib.request
 import urllib.error
 
+# Ensure localhost/127.0.0.1 bypasses any corporate/WSL HTTP proxy
+os.environ["NO_PROXY"] = "localhost,127.0.0.1,::1"
+os.environ["no_proxy"] = "localhost,127.0.0.1,::1"
+
 try:
     import aiohttp
 except ImportError:

@@ -33,10 +33,13 @@ MODEL_NAME="${1:-Qwen/Qwen2.5-32B-Instruct-AWQ}"
 if [[ $# -gt 0 ]]; then
     shift
 fi
+export NO_PROXY="localhost,127.0.0.1,::1"
+export no_proxy="localhost,127.0.0.1,::1"
+
 PORT="${PORT:-8000}"
 HOST="${HOST:-0.0.0.0}"
 MAX_MODEL_LEN="${MAX_MODEL_LEN:-2048}"
-GPU_MEM_UTIL="${GPU_MEM_UTIL:-0.95}"
+GPU_MEM_UTIL="${GPU_MEM_UTIL:-0.92}"
 API_KEY="${API_KEY:-vllm-local-token}"
 CPU_OFFLOAD_GB="${CPU_OFFLOAD_GB:-12}"
 
@@ -76,6 +79,7 @@ exec vllm serve "${MODEL_NAME}" \
     --port "${PORT}" \
     --max-model-len "${MAX_MODEL_LEN}" \
     --gpu-memory-utilization "${GPU_MEM_UTIL}" \
+    --swap-space 1 \
     --api-key "${API_KEY}" \
     --trust-remote-code \
     "${EXTRA_ARGS[@]}" \

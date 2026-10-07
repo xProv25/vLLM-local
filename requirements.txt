@@ -3,7 +3,9 @@ vllm==0.6.3
 torch==2.4.0
 transformers==4.46.3
 tokenizers==0.20.3
-huggingface-hub==0.36.2
+huggingface-hub==0.26.5
+datasets==2.21.0
+outlines>=1.0.0
 
 # Faster Hugging Face Model Downloads
 hf-transfer>=0.1.8

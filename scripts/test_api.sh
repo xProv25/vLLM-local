@@ -2,15 +2,18 @@
 # Quick curl test for vLLM OpenAI-compatible endpoint
 set -euo pipefail
 
+export NO_PROXY="localhost,127.0.0.1,::1"
+export no_proxy="localhost,127.0.0.1,::1"
+
 BASE_URL="${1:-http://localhost:8000}"
 API_KEY="${2:-vllm-local-token}"
 
 echo ">>> 1. Checking models list..."
-curl -s -X GET "${BASE_URL}/v1/models" \
+curl --noproxy "*" -s -X GET "${BASE_URL}/v1/models" \
   -H "Authorization: Bearer ${API_KEY}" | jq . || curl -s -X GET "${BASE_URL}/v1/models" -H "Authorization: Bearer ${API_KEY}"
 
 echo -e "\n>>> 2. Testing Chat Completion..."
-curl -s -X POST "${BASE_URL}/v1/chat/completions" \
+curl --noproxy "*" -s -X POST "${BASE_URL}/v1/chat/completions" \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer ${API_KEY}" \
   -d '{
