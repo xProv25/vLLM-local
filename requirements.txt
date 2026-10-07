@@ -1,5 +1,6 @@
-# Core vLLM Engine (Target 0.6.3 with PyTorch 2.4.0)
+# Core vLLM & Ray Distributed Engine
 vllm==0.6.3
+ray[default]==2.38.0
 torch==2.4.0
 transformers==4.46.3
 tokenizers==0.20.3

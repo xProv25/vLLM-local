@@ -1,0 +1,26 @@
+# ==============================================================================
+# WSL2 Configuration for Multi-Node Distributed Cluster (Phase 2)
+# File target: %USERPROFILE%\.wslconfig
+#
+# CRITICAL FOR DISTRIBUTED INFERENCE:
+# - networkingMode=mirrored enables direct host network interface sharing.
+#   The WSL2 VM inherits the physical IP (192.168.1.100 or 192.168.1.101) directly,
+#   avoiding NAT translation issues with NCCL and Ray worker sockets.
+# - firewall=false disables internal WSL Hyper-V packet filtering.
+# - dnsTunneling=true ensures clean name resolution without altering host routing.
+# ==============================================================================
+
+[wsl2]
+# Network configuration (Mirrored mode)
+networkingMode=mirrored
+firewall=false
+dnsTunneling=true
+autoProxy=false
+
+# Memory and CPU resources
+memory=12GB
+swap=8GB
+processors=16
+
+# Hardware Virtualization
+nestedVirtualization=true
