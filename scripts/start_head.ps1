@@ -15,5 +15,6 @@ Write-Host " Ray Port:         $Port" -ForegroundColor White
 Write-Host " Dashboard:        http://$HeadIp`:$DashboardPort" -ForegroundColor White
 Write-Host "==========================================================" -ForegroundColor Cyan
 
-$wslCmd = "export HEAD_IP=$HeadIp; export RAY_PORT=$Port; export DASHBOARD_PORT=$DashboardPort; /mnt/c/Users/ADMIN/Desktop/vLLM/scripts/start_head.sh"
+$scriptDirWsl = (wsl -d Ubuntu -e wslpath -a -u ($PSScriptRoot -replace '\\', '/')).Trim()
+$wslCmd = "export HEAD_IP=$HeadIp; export RAY_PORT=$Port; export DASHBOARD_PORT=$DashboardPort; $scriptDirWsl/start_head.sh"
 wsl -d Ubuntu -e bash -c $wslCmd

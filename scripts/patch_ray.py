@@ -35,12 +35,16 @@ def main():
         'device_name = device_name.decode("utf-8", errors="ignore")',
     )
 
-    pynvml_path = os.path.join(sp, "pynvml.py")
-    patch_file(
-        pynvml_path,
-        'return res.decode()',
-        'return res.decode("utf-8", errors="ignore").strip("\\x00")',
-    )
+    pynvml_paths = [
+        os.path.join(sp, "pynvml.py"),
+        os.path.join(sp, "ray", "_private", "thirdparty", "pynvml", "pynvml.py"),
+    ]
+    for p in pynvml_paths:
+        patch_file(
+            p,
+            'return res.decode()',
+            'return res.decode("utf-8", errors="ignore").strip("\\x00")',
+        )
     print("[+] Ray & pynvml hotfixes applied successfully.")
 
 if __name__ == "__main__":

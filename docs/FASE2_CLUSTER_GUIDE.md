@@ -79,8 +79,12 @@ Porte aperte automaticamente:
 - **TCP 29500**: PyTorch Distributed Master Rendezvous
 - **TCP 30000-65535**: NCCL Dynamic High-Socket Transport
 
-### Passo 3: Configurazione IP Statico
-Da Windows PowerShell (come Amministratore):
+### Passo 3: Configurazione IP e Rete
+
+Sono supportate due modalità di collegamento:
+
+#### Opzione A: Cavo Diretto Cat6 / Switch Gigabit (Consigliata per massime performance)
+Configura gli IP statici dedicati tramite PowerShell (eseguito come Amministratore):
 - **Sull'Head Node**:
   ```powershell
   powershell -ExecutionPolicy Bypass -File .\scripts\setup_network.ps1 -Role Head -DisableWifi
@@ -90,56 +94,74 @@ Da Windows PowerShell (come Amministratore):
   powershell -ExecutionPolicy Bypass -File .\scripts\setup_network.ps1 -Role Worker -DisableWifi
   ```
 
+#### Opzione B: Rete Locale Esistente / Wi-Fi (Senza cavi aggiuntivi)
+Se i due computer sono connessi alla stessa rete Wi-Fi o router LAN (es. subnet `10.10.10.x` o `192.168.0.x`):
+- **Non è necessario** eseguire `setup_network.ps1`.
+- Recupera l'indirizzo IP dell'Head Node aprendo PowerShell sul master ed eseguendo `ipconfig` (o in WSL `hostname -I`).
+- Al momento di collegare il worker, specifica semplicemente l'IP dell'Head:
+  ```powershell
+  .\scripts\start_worker.ps1 -HeadIp "<IP_DELL_HEAD>"
+  ```
+  Lo script rileverà automaticamente l'interfaccia di rete e l'IP attivo del Worker Node.
+
 ---
 
-## 4. Installazione Ambiente Python (Sul Nodo Worker)
+## 4. Installazione Ambiente Python (Sul Nodo Worker o su Qualsiasi Nuovo PC)
 
 Sul secondo computer (Worker), clonare il repository ed eseguire il setup:
 
 ```bash
-# 1. Clona il repository privato con il tuo GitHub Personal Access Token
+# 1. Clona il repository
 git clone https://<GITHUB_TOKEN>@github.com/xProv25/vLLM-local.git
 cd vLLM-local
 
-# 2. Installa uv (se non presente) e crea l'ambiente Python 3.12
+# 2. Installa uv (se non presente) e crea l'ambiente Python 3.12 dedicato
 curl -LsSf https://astral.sh/uv/install.sh | sh
 ~/.local/bin/uv venv --seed --python 3.12 ~/vllm-env
 
-# 3. Installa le dipendenze identiche al master
+# 3. Installa le dipendenze identiche all'Head Node
 source ~/vllm-env/bin/activate
 ~/.local/bin/uv pip install -r requirements.txt
 ```
+
+> [!NOTE]
+> **Compatibilità Percorsi Cross-Computer**:
+> Tutti gli script PowerShell (`start_worker.ps1`, `start_head.ps1`, `run_vllm_cluster.ps1`, `run_vllm.ps1`) rilevano automaticamente il percorso in cui risiede il repository tramite `$PSScriptRoot` e lo convertono nel percorso WSL nativo. Non vi sono percorsi assoluti fissati: il codice funziona su qualsiasi PC e nome utente Windows.
 
 ---
 
 ## 5. Sequenza di Avvio e Orchestrazione del Cluster
 
 ### Fase A: Avvio del Nodo Master (Head Node)
-Sull'Head Node (`192.168.1.100`), avviare Ray Head:
+Sull'Head Node, avviare Ray Head:
 
-- **Da Bash**:
-  ```bash
-  ./scripts/start_head.sh
-  ```
-- **Oppure da Windows PowerShell**:
+- **Se su cavo Ethernet (IP default 192.168.1.100)**:
   ```powershell
   .\scripts\start_head.ps1
   ```
+- **Se su IP diverso (es. Wi-Fi)**:
+  ```powershell
+  .\scripts\start_head.ps1 -HeadIp "<IP_DELL_HEAD>"
+  ```
 
-L'output confermerà l'avvio del master e l'URL della dashboard: `http://192.168.1.100:8265`.
+L'output confermerà l'avvio del master e l'URL della dashboard: `http://<IP_HEAD>:8265`.
 
 ---
 
 ### Fase B: Connessione del Nodo Worker
-Sul Worker Node (`192.168.1.101`), collegarsi al master:
+Sul Worker Node, collegarsi all'Head:
 
-- **Da Bash**:
-  ```bash
-  ./scripts/start_worker.sh 192.168.1.100
-  ```
-- **Oppure da Windows PowerShell**:
+- **Se su cavo Ethernet (IP default 192.168.1.100)**:
   ```powershell
-  .\scripts\start_worker.ps1 -HeadIp "192.168.1.100"
+  .\scripts\start_worker.ps1
+  ```
+- **Se su IP diverso (es. Wi-Fi)**:
+  ```powershell
+  .\scripts\start_worker.ps1 -HeadIp "<IP_DELL_HEAD>"
+  ```
+- **Da Bash WSL2**:
+  ```bash
+  ./scripts/start_worker.sh "<IP_DELL_HEAD>"
   ```
 
 ---

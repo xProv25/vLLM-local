@@ -50,7 +50,7 @@ Nel secondo terminale, misura la velocità di generazione (tokens/s) e la latenz
 
 ### Da Windows PowerShell:
 ```powershell
-wsl -d Ubuntu -e /home/admin_ubuntu/vllm-env/bin/python /mnt/c/Users/ADMIN/Desktop/vLLM/scripts/benchmark_client.py --max-tokens 256
+wsl -d Ubuntu -e bash -c "source ~/vllm-env/bin/activate && python scripts/benchmark_client.py --max-tokens 256"
 ```
 
 ### Oppure da Bash in WSL2:

@@ -141,3 +141,5 @@ Nella seconda fase configureremo:
 2. **Ray Worker Node(s)** sugli altri laptop in rete LAN (Wi-Fi 6 o Ethernet 2.5G).
 3. **Pipeline Parallelism (`--pipeline-parallel-size 2` o `3`)**:
    Distribuzione sequenziale dei 64 layer del modello 32B tra le macchine, consentendo a ciascun laptop di caricare solo 6-8 GB di pesi, sfruttando al 100% la VRAM senza degradazione da CPU swapping.
+
+Per la procedura dettagliata di configurazione Head/Worker, consultare la [Guida Operativa Cluster (Fase 2)](docs/FASE2_CLUSTER_GUIDE.md).

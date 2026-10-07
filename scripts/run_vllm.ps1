@@ -29,6 +29,6 @@ Write-Host " CPU Offload (GB):    $CpuOffloadGb" -ForegroundColor White
 Write-Host " Endpoint:            http://$HostIp`:$Port" -ForegroundColor White
 Write-Host "==========================================================" -ForegroundColor Cyan
 
-$wslCmd = "export MAX_MODEL_LEN=$MaxModelLen; export GPU_MEM_UTIL=$GpuMemUtil; export CPU_OFFLOAD_GB=$CpuOffloadGb; export PORT=$Port; export HOST=$HostIp; export API_KEY=$ApiKey; /mnt/c/Users/ADMIN/Desktop/vLLM/scripts/run_vllm.sh '$Model'"
-
+$scriptDirWsl = (wsl -d Ubuntu -e wslpath -a -u ($PSScriptRoot -replace '\\', '/')).Trim()
+$wslCmd = "export MAX_MODEL_LEN=$MaxModelLen; export GPU_MEM_UTIL=$GpuMemUtil; export CPU_OFFLOAD_GB=$CpuOffloadGb; export PORT=$Port; export HOST=$HostIp; export API_KEY=$ApiKey; $scriptDirWsl/run_vllm.sh '$Model'"
 wsl -d Ubuntu -e bash -c $wslCmd
