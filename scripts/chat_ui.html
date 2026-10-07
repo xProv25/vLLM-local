@@ -27,6 +27,7 @@
       --danger: #ef4444;
       --warning: #f59e0b;
       --info: #3b82f6;
+      --purple: #a855f7;
       --radius-sm: 8px;
       --radius-md: 12px;
       --radius-lg: 16px;
@@ -63,9 +64,7 @@
       flex-shrink: 0;
     }
 
-    /* ============================================================
-       SIDEBAR
-       ============================================================ */
+    /* SIDEBAR */
     .sidebar {
       width: var(--sidebar-width);
       height: 100vh;
@@ -329,7 +328,7 @@
       border-top: 1px solid var(--border-subtle);
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 6px;
     }
 
     .footer-btn {
@@ -337,12 +336,12 @@
       align-items: center;
       gap: 12px;
       width: 100%;
-      padding: 9px 12px;
+      padding: 8px 10px;
       background: transparent;
       border: none;
       border-radius: var(--radius-sm);
       color: var(--text-primary);
-      font-size: 13.5px;
+      font-size: 13px;
       font-weight: 500;
       cursor: pointer;
       transition: background var(--transition-speed);
@@ -357,12 +356,13 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 8px 12px;
+      padding: 7px 10px;
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-sm);
       font-size: 11.5px;
       color: var(--text-secondary);
+      margin-bottom: 4px;
     }
 
     .pulse-dot {
@@ -379,9 +379,7 @@
       50% { opacity: 0.4; transform: scale(0.85); }
     }
 
-    /* ============================================================
-       MAIN CHAT AREA
-       ============================================================ */
+    /* MAIN AREA */
     .main-area {
       flex: 1;
       height: 100vh;
@@ -411,7 +409,6 @@
       position: relative;
     }
 
-    /* Model Selector Dropdown & Menu */
     .model-badge-dropdown {
       display: flex;
       align-items: center;
@@ -443,7 +440,6 @@
       border-radius: 999px;
     }
 
-    /* Model Dropdown Menu */
     .model-dropdown-menu {
       position: absolute;
       top: 48px;
@@ -490,7 +486,7 @@
       gap: 8px;
     }
 
-    /* Chat Messages Viewport */
+    /* CHAT VIEWPORT */
     .chat-viewport {
       flex: 1;
       overflow-y: auto;
@@ -568,7 +564,6 @@
       justify-content: flex-end;
     }
 
-    /* Welcome Hero */
     .welcome-hero {
       max-width: 760px;
       margin: auto auto;
@@ -640,14 +635,9 @@
       font-size: 13.5px;
     }
 
-    /* Markdown Formatting */
-    .turn-content p {
-      margin-bottom: 12px;
-    }
-    .turn-content p:last-child {
-      margin-bottom: 0;
-    }
-
+    /* MARKDOWN */
+    .turn-content p { margin-bottom: 12px; }
+    .turn-content p:last-child { margin-bottom: 0; }
     .turn-content pre {
       background: #141414;
       border: 1px solid rgba(255, 255, 255, 0.1);
@@ -681,9 +671,7 @@
       transition: color var(--transition-speed);
     }
 
-    .copy-code-btn:hover {
-      color: var(--text-primary);
-    }
+    .copy-code-btn:hover { color: var(--text-primary); }
 
     .code-body {
       padding: 12px 14px;
@@ -699,18 +687,9 @@
       font-size: 13px;
     }
 
-    .turn-content ul, .turn-content ol {
-      margin: 8px 0 12px 20px;
-    }
-
-    .turn-content li {
-      margin-bottom: 4px;
-    }
-
-    .turn-content h1, .turn-content h2, .turn-content h3 {
-      margin: 16px 0 8px 0;
-      font-weight: 600;
-    }
+    .turn-content ul, .turn-content ol { margin: 8px 0 12px 20px; }
+    .turn-content li { margin-bottom: 4px; }
+    .turn-content h1, .turn-content h2, .turn-content h3 { margin: 16px 0 8px 0; font-weight: 600; }
 
     .turn-footer {
       display: flex;
@@ -743,7 +722,7 @@
       margin-left: auto;
     }
 
-    /* Floating Input Capsule */
+    /* INPUT DOCK */
     .input-dock {
       position: absolute;
       bottom: 0;
@@ -790,9 +769,7 @@
       resize: none;
     }
 
-    .chat-textarea::placeholder {
-      color: var(--text-muted);
-    }
+    .chat-textarea::placeholder { color: var(--text-muted); }
 
     .action-btn {
       width: 36px;
@@ -809,22 +786,9 @@
       flex-shrink: 0;
     }
 
-    .action-btn:hover {
-      background: #e5e5e5;
-      transform: scale(1.04);
-    }
-
-    .action-btn:disabled {
-      background: #3e3e3e;
-      color: #7a7a7a;
-      cursor: not-allowed;
-      transform: none;
-    }
-
-    .action-btn.stop {
-      background: var(--danger);
-      color: #fff;
-    }
+    .action-btn:hover { background: #e5e5e5; transform: scale(1.04); }
+    .action-btn:disabled { background: #3e3e3e; color: #7a7a7a; cursor: not-allowed; transform: none; }
+    .action-btn.stop { background: var(--danger); color: #fff; }
 
     .input-disclaimer {
       font-size: 11px;
@@ -833,9 +797,7 @@
       pointer-events: auto;
     }
 
-    /* ============================================================
-       SETTINGS MODAL
-       ============================================================ */
+    /* SETTINGS MODAL */
     .modal-overlay {
       position: fixed;
       inset: 0;
@@ -854,8 +816,8 @@
     }
 
     .modal-box {
-      width: 90%;
-      max-width: 640px;
+      width: 92%;
+      max-width: 680px;
       background: var(--bg-modal);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-lg);
@@ -867,41 +829,37 @@
     }
 
     .modal-header {
-      padding: 18px 22px;
+      padding: 16px 22px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       border-bottom: 1px solid var(--border-subtle);
     }
 
-    .modal-title {
-      font-size: 17px;
-      font-weight: 600;
-    }
+    .modal-title { font-size: 17px; font-weight: 600; }
 
     .modal-tabs {
       display: flex;
       border-bottom: 1px solid var(--border-subtle);
       padding: 0 16px;
       background: rgba(255, 255, 255, 0.02);
+      overflow-x: auto;
     }
 
     .modal-tab-btn {
-      padding: 12px 16px;
+      padding: 12px 14px;
       background: transparent;
       border: none;
       color: var(--text-secondary);
       font-weight: 500;
-      font-size: 13.5px;
+      font-size: 13px;
       cursor: pointer;
       position: relative;
+      white-space: nowrap;
       transition: color var(--transition-speed);
     }
 
-    .modal-tab-btn.active {
-      color: var(--text-primary);
-    }
-
+    .modal-tab-btn.active { color: var(--text-primary); font-weight: 600; }
     .modal-tab-btn.active::after {
       content: '';
       position: absolute;
@@ -913,42 +871,19 @@
     }
 
     .modal-body {
-      padding: 22px;
+      padding: 20px 22px;
       overflow-y: auto;
       display: flex;
       flex-direction: column;
       gap: 18px;
     }
 
-    .tab-content {
-      display: none;
-      flex-direction: column;
-      gap: 18px;
-    }
+    .tab-content { display: none; flex-direction: column; gap: 18px; }
+    .tab-content.active { display: flex; }
 
-    .tab-content.active {
-      display: flex;
-    }
-
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .form-label {
-      display: flex;
-      justify-content: space-between;
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--text-primary);
-    }
-
-    .form-desc {
-      font-size: 12px;
-      color: var(--text-muted);
-      line-height: 1.45;
-    }
+    .form-group { display: flex; flex-direction: column; gap: 8px; }
+    .form-label { display: flex; justify-content: space-between; font-size: 13px; font-weight: 500; color: var(--text-primary); }
+    .form-desc { font-size: 12px; color: var(--text-muted); line-height: 1.45; }
 
     .form-input, .form-select, .form-textarea {
       width: 100%;
@@ -963,36 +898,13 @@
       transition: border-color var(--transition-speed);
     }
 
-    .form-input:focus, .form-select:focus, .form-textarea:focus {
-      border-color: var(--accent);
-    }
+    .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--accent); }
+    .form-textarea { min-height: 90px; resize: vertical; }
 
-    .form-textarea {
-      min-height: 90px;
-      resize: vertical;
-    }
+    .slider-row { display: flex; align-items: center; gap: 14px; }
+    .slider-row input[type="range"] { flex: 1; accent-color: var(--accent); cursor: pointer; }
+    .slider-number { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--accent); min-width: 48px; text-align: right; }
 
-    .slider-row {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .slider-row input[type="range"] {
-      flex: 1;
-      accent-color: var(--accent);
-      cursor: pointer;
-    }
-
-    .slider-number {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 13px;
-      color: var(--accent);
-      min-width: 48px;
-      text-align: right;
-    }
-
-    /* Token Explanation Box */
     .token-breakdown-card {
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid rgba(16, 163, 127, 0.25);
@@ -1012,39 +924,130 @@
       display: flex;
     }
 
-    .token-bar-input {
-      background: #3b82f6;
-      height: 100%;
-      transition: width 0.2s ease;
-    }
+    .token-bar-input { background: #3b82f6; height: 100%; transition: width 0.2s ease; }
+    .token-bar-output { background: var(--accent); height: 100%; transition: width 0.2s ease; }
 
-    .token-bar-output {
-      background: var(--accent);
-      height: 100%;
-      transition: width 0.2s ease;
-    }
+    .token-legend { display: flex; justify-content: space-between; font-size: 11.5px; color: var(--text-muted); }
+    .legend-item { display: flex; align-items: center; gap: 6px; }
+    .legend-dot { width: 8px; height: 8px; border-radius: 50%; }
 
-    .token-legend {
-      display: flex;
-      justify-content: space-between;
-      font-size: 11.5px;
+    /* MODEL CARDS IN CATALOG */
+    .catalog-section-title {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
       color: var(--text-muted);
+      margin-bottom: 4px;
     }
 
-    .legend-item {
+    .model-card-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .model-catalog-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: all var(--transition-speed);
+    }
+
+    .model-catalog-card:hover {
+      border-color: var(--border-active);
+    }
+
+    .model-card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .model-card-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .model-card-desc {
+      font-size: 12px;
+      color: var(--text-secondary);
+      line-height: 1.4;
+    }
+
+    .badge-group {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .tag-badge {
+      font-size: 10.5px;
+      font-weight: 500;
+      padding: 2px 7px;
+      border-radius: 4px;
+      border: 1px solid transparent;
+    }
+
+    .tag-installed {
+      background: rgba(16, 163, 127, 0.15);
+      color: var(--accent);
+      border-color: rgba(16, 163, 127, 0.35);
+    }
+
+    .tag-vram {
+      background: rgba(59, 130, 246, 0.15);
+      color: #60a5fa;
+      border-color: rgba(59, 130, 246, 0.35);
+    }
+
+    .tag-cluster {
+      background: rgba(168, 85, 247, 0.15);
+      color: #c084fc;
+      border-color: rgba(168, 85, 247, 0.35);
+    }
+
+    .cmd-box {
       display: flex;
       align-items: center;
-      gap: 6px;
+      justify-content: space-between;
+      background: #141414;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-sm);
+      padding: 6px 10px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11.5px;
+      color: var(--text-secondary);
     }
 
-    .legend-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
+    .cmd-copy-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11px;
+      font-family: 'Inter', sans-serif;
+      padding: 2px 6px;
+      border-radius: 4px;
+      transition: all var(--transition-speed);
+    }
+
+    .cmd-copy-btn:hover {
+      color: var(--text-primary);
+      background: rgba(255, 255, 255, 0.08);
     }
 
     .modal-footer {
-      padding: 16px 22px;
+      padding: 14px 22px;
       border-top: 1px solid var(--border-subtle);
       display: flex;
       justify-content: flex-end;
@@ -1059,13 +1062,11 @@
       border-radius: var(--radius-sm);
       color: var(--text-primary);
       cursor: pointer;
-      font-size: 13.5px;
+      font-size: 13px;
       font-weight: 500;
     }
 
-    .btn-secondary:hover {
-      background: var(--bg-surface);
-    }
+    .btn-secondary:hover { background: var(--bg-surface); }
 
     .btn-primary {
       padding: 8px 18px;
@@ -1074,14 +1075,12 @@
       border-radius: var(--radius-sm);
       color: #fff;
       cursor: pointer;
-      font-size: 13.5px;
+      font-size: 13px;
       font-weight: 500;
       transition: background var(--transition-speed);
     }
 
-    .btn-primary:hover {
-      background: var(--accent-hover);
-    }
+    .btn-primary:hover { background: var(--accent-hover); }
 
     .btn-danger {
       padding: 8px 16px;
@@ -1094,16 +1093,9 @@
       font-weight: 500;
     }
 
-    .btn-danger:hover {
-      background: rgba(239, 68, 68, 0.25);
-    }
+    .btn-danger:hover { background: rgba(239, 68, 68, 0.25); }
 
-    .preset-pills {
-      display: flex;
-      gap: 6px;
-      flex-wrap: wrap;
-    }
-
+    .preset-pills { display: flex; gap: 6px; flex-wrap: wrap; }
     .preset-pill {
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid var(--border-subtle);
@@ -1114,12 +1106,7 @@
       cursor: pointer;
       transition: all var(--transition-speed);
     }
-
-    .preset-pill:hover {
-      background: var(--bg-surface);
-      color: var(--text-primary);
-      border-color: var(--border-active);
-    }
+    .preset-pill:hover { background: var(--bg-surface); color: var(--text-primary); border-color: var(--border-active); }
 
     .tag-output-only {
       background: rgba(16, 163, 127, 0.18);
@@ -1135,11 +1122,8 @@
 </head>
 <body>
 
-  <!-- ============================================================
-       SIDEBAR
-       ============================================================ -->
+  <!-- SIDEBAR -->
   <aside class="sidebar" id="sidebar">
-    <!-- Header: Brand & Close -->
     <div class="sidebar-header">
       <div class="brand-btn">
         <div class="brand-avatar">vL</div>
@@ -1150,7 +1134,6 @@
       </button>
     </div>
 
-    <!-- Actions: New Chat & Search -->
     <div class="sidebar-actions">
       <button class="new-chat-btn" id="newChatBtn" title="Nuova Chat (Ctrl+K)">
         <div class="new-chat-content">
@@ -1166,10 +1149,8 @@
       </div>
     </div>
 
-    <!-- History List -->
     <div class="sidebar-history" id="sidebarHistory"></div>
 
-    <!-- Footer: Settings & GPU status -->
     <div class="sidebar-footer">
       <div class="gpu-pill">
         <div style="display: flex; align-items: center; gap: 8px;">
@@ -1179,6 +1160,11 @@
         <span style="font-weight: 600; color: var(--accent);">AWQ</span>
       </div>
 
+      <button class="footer-btn" id="openModelsBtn">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" x2="12" y1="22.08" y2="12"/></svg>
+        <span>📦 Catalogo & Download Modelli</span>
+      </button>
+
       <button class="footer-btn" id="openSettingsBtn">
         <svg class="icon" viewBox="0 0 24 24"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
         <span>Impostazioni</span>
@@ -1186,31 +1172,29 @@
     </div>
   </aside>
 
-  <!-- ============================================================
-       MAIN CHAT AREA
-       ============================================================ -->
+  <!-- MAIN CHAT AREA -->
   <main class="main-area">
-    <!-- Top Navbar -->
     <header class="top-navbar">
       <div class="nav-left">
         <button class="icon-btn" id="openSidebarBtn" title="Apri barra laterale" style="display: none;">
           <svg class="icon" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 3v18"/></svg>
         </button>
 
-        <!-- Model Selector Dropdown Header -->
         <div class="model-badge-dropdown" id="modelSelectorDropdown" title="Clicca per cambiare modello o aggiornare">
           <span id="activeModelName">Qwen/Qwen2.5-7B-Instruct-AWQ</span>
           <span class="model-sub-badge">vLLM 0.6.3</span>
           <svg class="icon" style="width: 14px; height: 14px; color: var(--text-muted);" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>
         </div>
 
-        <!-- Floating Model Selector Menu -->
         <div class="model-dropdown-menu" id="modelDropdownMenu">
           <div style="padding: 6px 10px; font-size: 11px; color: var(--text-muted); font-weight: 600; text-transform: uppercase;">Modelli Attivi su vLLM</div>
           <div id="modelMenuList"></div>
           <div style="border-top: 1px solid var(--border-subtle); margin-top: 6px; padding-top: 6px;">
             <div class="model-menu-item" id="refreshModelsMenuItem">
               <span>🔄 Aggiorna lista dal server</span>
+            </div>
+            <div class="model-menu-item" id="openModelsFromDropdownItem" style="color: var(--accent);">
+              <span>📦 Apri Catalogo Download Modelli...</span>
             </div>
           </div>
         </div>
@@ -1226,10 +1210,8 @@
       </div>
     </header>
 
-    <!-- Chat Viewport -->
     <div class="chat-viewport" id="chatViewport"></div>
 
-    <!-- Floating Input Dock -->
     <div class="input-dock">
       <div class="input-wrapper">
         <textarea id="chatInput" class="chat-textarea" rows="1" placeholder="Scrivi un messaggio a vLLM... (Invio invia, Shift+Invio a capo)"></textarea>
@@ -1243,13 +1225,11 @@
     </div>
   </main>
 
-  <!-- ============================================================
-       SETTINGS MODAL
-       ============================================================ -->
+  <!-- SETTINGS MODAL -->
   <div class="modal-overlay" id="settingsModal">
     <div class="modal-box">
       <div class="modal-header">
-        <div class="modal-title">Impostazioni vLLM Studio</div>
+        <div class="modal-title">Impostazioni & Modelli</div>
         <button class="icon-btn" id="closeSettingsBtn">
           <svg class="icon" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>
         </button>
@@ -1258,6 +1238,7 @@
       <div class="modal-tabs">
         <button class="modal-tab-btn active" data-tab="tab-general">Generale & Rete</button>
         <button class="modal-tab-btn" data-tab="tab-model">Parametri Inferenza</button>
+        <button class="modal-tab-btn" data-tab="tab-models" id="tabBtnModels">📦 Catalogo Modelli</button>
         <button class="modal-tab-btn" data-tab="tab-data">Dati & Cronologia</button>
       </div>
 
@@ -1287,7 +1268,6 @@
 
         <!-- Tab 2: Parametri Inferenza & Token Explanation -->
         <div class="tab-content" id="tab-model">
-          <!-- Token Slider with Explicit Explanation -->
           <div class="form-group">
             <div class="form-label">
               <span style="display: flex; align-items: center; gap: 8px;">
@@ -1305,7 +1285,6 @@
               <input type="range" id="cfgMaxTokens" min="128" max="1536" step="64" value="1024">
             </div>
 
-            <!-- Visual Context Breakdown Box -->
             <div class="token-breakdown-card">
               <div style="display: flex; justify-content: space-between; font-size: 12px;">
                 <span>Ripartizione Finestra di Contesto Totale (<strong>2048 token</strong>):</span>
@@ -1328,7 +1307,6 @@
             </div>
           </div>
 
-          <!-- Temperature Slider -->
           <div class="form-group">
             <div class="form-label">
               <span>Temperatura</span>
@@ -1340,7 +1318,6 @@
             </div>
           </div>
 
-          <!-- System Prompt with Presets -->
           <div class="form-group">
             <div class="form-label">System Prompt Predefinito</div>
             <div class="preset-pills" style="margin-bottom: 6px;">
@@ -1352,7 +1329,125 @@
           </div>
         </div>
 
-        <!-- Tab 3: Dati & Cronologia -->
+        <!-- Tab 3: CATALOGO MODELLI (INSTALLATI & INSTALLABILI) -->
+        <div class="tab-content" id="tab-models">
+          <div>
+            <div class="catalog-section-title">Modelli Installati Localmente & Attivi</div>
+            <div class="model-card-grid">
+              <div class="model-catalog-card" style="border-left: 3px solid var(--accent);">
+                <div class="model-card-top">
+                  <div>
+                    <div class="model-card-name">Qwen/Qwen2.5-7B-Instruct-AWQ</div>
+                    <div class="model-card-desc">Modello di punta per chat generale, programmazione e compiti analitici.</div>
+                  </div>
+                  <div class="badge-group">
+                    <span class="tag-badge tag-installed">ATTIVO SU vLLM</span>
+                    <span class="tag-badge tag-vram">8GB VRAM</span>
+                  </div>
+                </div>
+                <div style="font-size: 11.5px; color: var(--text-muted); display: flex; gap: 14px;">
+                  <span>Formato: <strong>AWQ 4-bit</strong></span>
+                  <span>Dimensione: <strong>~4.5 GB</strong></span>
+                  <span>Posizione: <strong>WSL2 Cache</strong></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top: 10px;">
+            <div class="catalog-section-title">Catalogo Modelli Compatibili (Download Automatico)</div>
+            <div class="form-desc" style="margin-bottom: 10px;">
+              Puoi scaricare e aggiungere ciascuno di questi modelli con lo script automatico. Clicca <strong>"Copia Comando"</strong> ed eseguilo nel terminale PowerShell.
+            </div>
+
+            <div class="model-card-grid">
+              <!-- DeepSeek R1 7B AWQ -->
+              <div class="model-catalog-card">
+                <div class="model-card-top">
+                  <div>
+                    <div class="model-card-name">DeepSeek-R1 Distill Qwen 7B (AWQ)</div>
+                    <div class="model-card-desc">Modello di ragionamento (Reasoning/o1-like). Eccellente per logica matematica, algoritmi complessi e problem solving.</div>
+                  </div>
+                  <div class="badge-group">
+                    <span class="tag-badge tag-vram">8GB VRAM (Singolo PC)</span>
+                    <span class="tag-badge" style="background: rgba(245, 158, 11, 0.15); color: var(--warning); border-color: rgba(245, 158, 11, 0.35);">Reasoning</span>
+                  </div>
+                </div>
+                <div class="cmd-box">
+                  <code>.\scripts\download_model.ps1 -Model "deepseek-r1-7b"</code>
+                  <button class="cmd-copy-btn" data-cmd=".\scripts\download_model.ps1 -Model &quot;deepseek-r1-7b&quot;">
+                    <svg class="icon" style="width: 13px; height: 13px;" viewBox="0 0 24 24"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                    <span>Copia</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Llama 3.2 3B -->
+              <div class="model-catalog-card">
+                <div class="model-card-top">
+                  <div>
+                    <div class="model-card-name">Llama 3.2 3B Instruct (Meta)</div>
+                    <div class="model-card-desc">Modello ultraleggero e fulmineo (~100+ token/s). Consumo VRAM minimo, perfetto per risposte istantanee.</div>
+                  </div>
+                  <div class="badge-group">
+                    <span class="tag-badge tag-vram">6GB VRAM (Singolo PC)</span>
+                    <span class="tag-badge" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border-color: rgba(16, 185, 129, 0.35);">Ultra-Fast</span>
+                  </div>
+                </div>
+                <div class="cmd-box">
+                  <code>.\scripts\download_model.ps1 -Model "llama-3.2-3b"</code>
+                  <button class="cmd-copy-btn" data-cmd=".\scripts\download_model.ps1 -Model &quot;llama-3.2-3b&quot;">
+                    <svg class="icon" style="width: 13px; height: 13px;" viewBox="0 0 24 24"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                    <span>Copia</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Mistral 7B v0.3 AWQ -->
+              <div class="model-catalog-card">
+                <div class="model-card-top">
+                  <div>
+                    <div class="model-card-name">Mistral 7B Instruct v0.3 (AWQ)</div>
+                    <div class="model-card-desc">Solida architettura europea multilingua. Forte capacità di sintesi e comprensione testi in italiano.</div>
+                  </div>
+                  <div class="badge-group">
+                    <span class="tag-badge tag-vram">8GB VRAM (Singolo PC)</span>
+                  </div>
+                </div>
+                <div class="cmd-box">
+                  <code>.\scripts\download_model.ps1 -Model "mistral-7b"</code>
+                  <button class="cmd-copy-btn" data-cmd=".\scripts\download_model.ps1 -Model &quot;mistral-7b&quot;">
+                    <svg class="icon" style="width: 13px; height: 13px;" viewBox="0 0 24 24"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                    <span>Copia</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Qwen 2.5 32B AWQ (Cluster Fase 2) -->
+              <div class="model-catalog-card" style="border-left: 3px solid var(--purple);">
+                <div class="model-card-top">
+                  <div>
+                    <div class="model-card-name">Qwen 2.5 32B Instruct (AWQ) - Cluster Fase 2</div>
+                    <div class="model-card-desc">Modello flagship (~18 GB). Raggiunge prestazioni livello GPT-4 eseguito in parallelo sui 2 PC (Pipeline Parallelism PP=2).</div>
+                  </div>
+                  <div class="badge-group">
+                    <span class="tag-badge tag-cluster">16GB VRAM (Cluster 2 Nodi)</span>
+                    <span class="tag-badge" style="background: rgba(168, 85, 247, 0.15); color: #c084fc; border-color: rgba(168, 85, 247, 0.35);">Fase 2 Ray</span>
+                  </div>
+                </div>
+                <div class="cmd-box">
+                  <code>.\scripts\download_model.ps1 -Model "qwen-32b"</code>
+                  <button class="cmd-copy-btn" data-cmd=".\scripts\download_model.ps1 -Model &quot;qwen-32b&quot;">
+                    <svg class="icon" style="width: 13px; height: 13px;" viewBox="0 0 24 24"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                    <span>Copia</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 4: Dati & Cronologia -->
         <div class="tab-content" id="tab-data">
           <div class="form-group">
             <div class="form-label">Esportazione Cronologia Completa</div>
@@ -1375,12 +1470,9 @@
     </div>
   </div>
 
-  <!-- ============================================================
-       APPLICATION LOGIC
-       ============================================================ -->
+  <!-- JAVASCRIPT LOGIC -->
   <script>
-    // --- STATE MANAGEMENT ---
-    const TOTAL_CONTEXT_LIMIT = 2048; // Total context length of vLLM server
+    const TOTAL_CONTEXT_LIMIT = 2048;
     const STORAGE_KEY_CONVS = 'vllm_studio_conversations_v1';
     const STORAGE_KEY_ACTIVE = 'vllm_studio_active_id_v1';
     const STORAGE_KEY_CONFIG = 'vllm_studio_config_v1';
@@ -1400,13 +1492,11 @@
     let isGenerating = false;
     let abortController = null;
 
-    // Load saved config safely
     try {
       const savedConfig = localStorage.getItem(STORAGE_KEY_CONFIG);
       if (savedConfig) config = { ...config, ...JSON.parse(savedConfig) };
     } catch(e) { console.warn('Config load error:', e); }
 
-    // Load saved conversations safely
     try {
       const savedConvs = localStorage.getItem(STORAGE_KEY_CONVS);
       if (savedConvs) conversations = JSON.parse(savedConvs);
@@ -1421,7 +1511,7 @@
       conversations = [];
     }
 
-    // --- DOM REFERENCES ---
+    // DOM Elements
     const sidebar = document.getElementById('sidebar');
     const collapseSidebarBtn = document.getElementById('collapseSidebarBtn');
     const openSidebarBtn = document.getElementById('openSidebarBtn');
@@ -1429,12 +1519,14 @@
     const searchHistoryInput = document.getElementById('searchHistoryInput');
     const sidebarHistory = document.getElementById('sidebarHistory');
     const openSettingsBtn = document.getElementById('openSettingsBtn');
+    const openModelsBtn = document.getElementById('openModelsBtn');
 
     const activeModelName = document.getElementById('activeModelName');
     const modelSelectorDropdown = document.getElementById('modelSelectorDropdown');
     const modelDropdownMenu = document.getElementById('modelDropdownMenu');
     const modelMenuList = document.getElementById('modelMenuList');
     const refreshModelsMenuItem = document.getElementById('refreshModelsMenuItem');
+    const openModelsFromDropdownItem = document.getElementById('openModelsFromDropdownItem');
 
     const exportChatBtn = document.getElementById('exportChatBtn');
     const clearActiveChatBtn = document.getElementById('clearActiveChatBtn');
@@ -1442,7 +1534,6 @@
     const chatInput = document.getElementById('chatInput');
     const sendActionBtn = document.getElementById('sendActionBtn');
 
-    // Settings Modal references
     const settingsModal = document.getElementById('settingsModal');
     const closeSettingsBtn = document.getElementById('closeSettingsBtn');
     const cancelSettingsBtn = document.getElementById('cancelSettingsBtn');
@@ -1451,6 +1542,7 @@
     const connTestResult = document.getElementById('connTestResult');
     const exportAllJsonBtn = document.getElementById('exportAllJsonBtn');
     const deleteAllHistoryBtn = document.getElementById('deleteAllHistoryBtn');
+    const tabBtnModels = document.getElementById('tabBtnModels');
 
     const cfgApiHost = document.getElementById('cfgApiHost');
     const cfgApiKey = document.getElementById('cfgApiKey');
@@ -1466,9 +1558,7 @@
     const legendInputText = document.getElementById('legendInputText');
     const legendOutputText = document.getElementById('legendOutputText');
 
-    // --- INITIALIZATION ---
     function init() {
-      // Sync form fields
       cfgApiHost.value = config.apiHost;
       cfgApiKey.value = config.apiKey;
       cfgTemperature.value = config.temperature;
@@ -1490,21 +1580,16 @@
       setupEventListeners();
     }
 
-    // --- URL SANITIZATION ---
     function sanitizeApiUrl(url) {
       if (!url) return 'http://localhost:8000/v1';
       let clean = url.trim().replace(/\/+$/, '');
-      if (!clean.endsWith('/v1')) {
-        clean += '/v1';
-      }
+      if (!clean.endsWith('/v1')) clean += '/v1';
       return clean;
     }
 
-    // --- TOKEN BREAKDOWN CALCULATION ---
     function updateTokenBreakdownUI(outputTokens) {
       const outTok = parseInt(outputTokens);
       const inTok = Math.max(128, TOTAL_CONTEXT_LIMIT - outTok);
-      
       const outPercent = ((outTok / TOTAL_CONTEXT_LIMIT) * 100).toFixed(1);
       const inPercent = (100 - outPercent).toFixed(1);
 
@@ -1517,14 +1602,11 @@
       legendOutputText.textContent = `Output consentito (Risposta): ${outTok} token`;
     }
 
-    // --- CONVERSATION CRUD & PERSISTENCE ---
     function saveState() {
       try {
         localStorage.setItem(STORAGE_KEY_CONVS, JSON.stringify(conversations));
         localStorage.setItem(STORAGE_KEY_ACTIVE, activeConversationId || '');
-      } catch(e) {
-        console.warn('Storage quota exceeded or disabled:', e);
-      }
+      } catch(e) { console.warn('Storage quota exceeded:', e); }
     }
 
     function createNewConversation(switchActive = true) {
@@ -1536,9 +1618,7 @@
         messages: []
       };
       conversations.unshift(newConv);
-      if (switchActive) {
-        activeConversationId = newConv.id;
-      }
+      if (switchActive) activeConversationId = newConv.id;
       saveState();
       renderSidebarHistory();
       renderChatMessages();
@@ -1570,20 +1650,16 @@
     function deleteConversation(id, event) {
       if (event) event.stopPropagation();
       if (!confirm('Vuoi davvero eliminare questa conversazione?')) return;
-
       conversations = conversations.filter(c => c.id !== id);
       if (activeConversationId === id) {
         activeConversationId = conversations.length > 0 ? conversations[0].id : null;
-        if (!activeConversationId) {
-          createNewConversation(false);
-        }
+        if (!activeConversationId) createNewConversation(false);
       }
       saveState();
       renderSidebarHistory();
       renderChatMessages();
     }
 
-    // --- RENDER SIDEBAR HISTORY (ChatGPT style) ---
     function renderSidebarHistory() {
       const searchTerm = (searchHistoryInput.value || '').toLowerCase().trim();
       sidebarHistory.innerHTML = '';
@@ -1624,7 +1700,6 @@
 
       Object.values(groups).forEach(g => {
         if (g.items.length === 0) return;
-
         const groupHeader = document.createElement('div');
         groupHeader.className = 'history-group-title';
         groupHeader.textContent = g.title;
@@ -1666,7 +1741,6 @@
       });
     }
 
-    // --- RENDER CHAT MESSAGES ---
     function renderChatMessages() {
       const conv = getActiveConversation();
       chatViewport.innerHTML = '';
@@ -1753,7 +1827,6 @@
       chatViewport.scrollTop = chatViewport.scrollHeight;
     }
 
-    // --- CONTEXT TRIMMING (Prevents 400 Context Limit Crash) ---
     function prepareSafeMessagePayload(convMessages, maxOutputTokens) {
       const budgetForInput = Math.max(384, TOTAL_CONTEXT_LIMIT - maxOutputTokens - 64);
       const payload = [];
@@ -1762,7 +1835,6 @@
         payload.push({ role: 'system', content: config.systemPrompt.trim() });
       }
 
-      // Estimate tokens roughly (~4 chars = 1 token)
       let currentEstTokens = (config.systemPrompt || '').length / 4;
       const reversedSafe = [];
 
@@ -1773,7 +1845,7 @@
           reversedSafe.unshift({ role: msg.role, content: msg.content });
           currentEstTokens += msgEst;
         } else {
-          break; // Stop taking older messages to prevent server crash
+          break;
         }
       }
 
@@ -1781,7 +1853,6 @@
       return payload;
     }
 
-    // --- SEND MESSAGE & STREAMING ---
     async function sendMessage() {
       const text = chatInput.value.trim();
       if (!text || isGenerating) return;
@@ -1906,9 +1977,7 @@
     }
 
     function stopGeneration() {
-      if (abortController) {
-        abortController.abort();
-      }
+      if (abortController) abortController.abort();
     }
 
     function updateSendButtonState() {
@@ -1929,7 +1998,6 @@
       }
     }
 
-    // --- AUTO FETCH & SWITCH MODELS ---
     async function fetchServerModels() {
       const sanitized = sanitizeApiUrl(config.apiHost);
       try {
@@ -1979,9 +2047,7 @@
       } catch(e) {}
     }
 
-    // --- EVENT LISTENERS & DELEGATION ---
     function setupEventListeners() {
-      // Sidebar Toggle
       collapseSidebarBtn.onclick = () => {
         sidebar.classList.add('collapsed');
         openSidebarBtn.style.display = 'flex';
@@ -1992,7 +2058,6 @@
         openSidebarBtn.style.display = 'none';
       };
 
-      // Model Dropdown Click Toggle
       modelSelectorDropdown.onclick = (e) => {
         e.stopPropagation();
         const isOpen = modelDropdownMenu.style.display === 'flex';
@@ -2005,18 +2070,19 @@
         fetchServerModels();
       };
 
-      // Close dropdown when clicking outside
+      openModelsFromDropdownItem.onclick = (e) => {
+        e.stopPropagation();
+        modelDropdownMenu.style.display = 'none';
+        openSettingsModal('tab-models');
+      };
+
       window.addEventListener('click', () => {
         if (modelDropdownMenu) modelDropdownMenu.style.display = 'none';
       });
 
-      // New Chat Button
       newChatBtn.onclick = () => createNewConversation(true);
-
-      // Search History Filter
       searchHistoryInput.oninput = () => renderSidebarHistory();
 
-      // Clear Active Chat
       clearActiveChatBtn.onclick = () => {
         const conv = getActiveConversation();
         if (conv && confirm('Svuotare tutti i messaggi di questa conversazione?')) {
@@ -2027,7 +2093,6 @@
         }
       };
 
-      // Export Current Chat to Markdown
       exportChatBtn.onclick = () => {
         const conv = getActiveConversation();
         if (!conv || conv.messages.length === 0) {
@@ -2041,7 +2106,6 @@
         downloadFile(`${conv.title.replace(/[^a-z0-9]/gi, '_')}.md`, md, 'text/markdown');
       };
 
-      // Input auto-growth & Enter key handling
       chatInput.oninput = () => {
         chatInput.style.height = 'auto';
         chatInput.style.height = Math.min(chatInput.scrollHeight, 180) + 'px';
@@ -2054,7 +2118,6 @@
         }
       };
 
-      // Global Keyboard Shortcuts
       window.onkeydown = (e) => {
         if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
           e.preventDefault();
@@ -2062,11 +2125,8 @@
         }
         if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'b') {
           e.preventDefault();
-          if (sidebar.classList.contains('collapsed')) {
-            openSidebarBtn.click();
-          } else {
-            collapseSidebarBtn.click();
-          }
+          if (sidebar.classList.contains('collapsed')) openSidebarBtn.click();
+          else collapseSidebarBtn.click();
         }
         if (e.key === 'Escape') {
           if (settingsModal.style.display === 'flex') closeSettingsModal();
@@ -2074,8 +2134,8 @@
         }
       };
 
-      // Settings Modal Tabs & Sliders
-      openSettingsBtn.onclick = () => openSettingsModal();
+      openSettingsBtn.onclick = () => openSettingsModal('tab-general');
+      openModelsBtn.onclick = () => openSettingsModal('tab-models');
       closeSettingsBtn.onclick = () => closeSettingsModal();
       cancelSettingsBtn.onclick = () => closeSettingsModal();
 
@@ -2099,7 +2159,6 @@
         pill.onclick = () => cfgSystemPrompt.value = pill.dataset.prompt;
       });
 
-      // Save Settings Action
       saveSettingsBtn.onclick = () => {
         config.apiHost = sanitizeApiUrl(cfgApiHost.value);
         config.apiKey = cfgApiKey.value.trim();
@@ -2111,7 +2170,6 @@
         fetchServerModels();
       };
 
-      // Test Connection Action
       testConnBtn.onclick = async () => {
         connTestResult.textContent = 'Verifica in corso...';
         connTestResult.style.color = 'var(--text-muted)';
@@ -2135,13 +2193,11 @@
         }
       };
 
-      // Export JSON All
       exportAllJsonBtn.onclick = () => {
         const json = JSON.stringify(conversations, null, 2);
         downloadFile(`vllm_studio_backup_${Date.now()}.json`, json, 'application/json');
       };
 
-      // Delete All History Action
       deleteAllHistoryBtn.onclick = () => {
         if (confirm('ATTENZIONE: Eliminare tutte le conversazioni salvate? L\'operazione non è reversibile.')) {
           conversations = [];
@@ -2152,7 +2208,20 @@
         }
       };
 
-      // Event Delegation for Copy Buttons (Crash-proof & High Performance)
+      // Copy Command Buttons in Catalog
+      document.querySelectorAll('.cmd-copy-btn').forEach(btn => {
+        btn.onclick = () => {
+          const cmd = btn.dataset.cmd;
+          navigator.clipboard.writeText(cmd);
+          const span = btn.querySelector('span');
+          if (span) {
+            span.textContent = '✓ Copiato!';
+            setTimeout(() => span.textContent = 'Copia', 1800);
+          }
+        };
+      });
+
+      // Event Delegation for chat message copy buttons
       chatViewport.addEventListener('click', (e) => {
         const copyCode = e.target.closest('.copy-code-btn');
         if (copyCode) {
@@ -2176,8 +2245,10 @@
       });
     }
 
-    function openSettingsModal() {
+    function openSettingsModal(defaultTab = 'tab-general') {
       settingsModal.style.display = 'flex';
+      const targetBtn = document.querySelector(`.modal-tab-btn[data-tab="${defaultTab}"]`);
+      if (targetBtn) targetBtn.click();
     }
 
     function closeSettingsModal() {
@@ -2185,7 +2256,6 @@
       connTestResult.textContent = 'Non testato';
     }
 
-    // --- UTILITIES ---
     function downloadFile(filename, content, type) {
       const blob = new Blob([content], { type });
       const a = document.createElement('a');
@@ -2210,12 +2280,10 @@
       if (!content) return '';
       let safe = escapeHtml(content);
 
-      // Handle unclosed code block during active streaming
       if ((safe.match(/```/g) || []).length % 2 === 1) {
         safe += '\n```';
       }
 
-      // Fenced code blocks ```lang\ncode```
       safe = safe.replace(/```([a-zA-Z0-9_\-\+]*)\n([\s\S]*?)```/g, (match, lang, code) => {
         const langLabel = lang || 'code';
         return `
@@ -2232,29 +2300,19 @@
         `;
       });
 
-      // Inline code
       safe = safe.replace(/`([^`]+)`/g, '<code>$1</code>');
-
-      // Bold & Italic
       safe = safe.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
       safe = safe.replace(/\*([^*]+)\*/g, '<em>$1</em>');
-
-      // Headings
       safe = safe.replace(/^### (.*$)/gim, '<h3>$1</h3>');
       safe = safe.replace(/^## (.*$)/gim, '<h2>$1</h2>');
       safe = safe.replace(/^# (.*$)/gim, '<h1>$1</h1>');
-
-      // Lists
       safe = safe.replace(/^\s*[-*]\s+(.*)$/gim, '<li>$1</li>');
       safe = safe.replace(/(<li>.*<\/li>)/gim, '<ul>$1</ul>');
-
-      // Line breaks outside code blocks
       safe = safe.replace(/\n/g, '<br>');
 
       return safe;
     }
 
-    // Launch application
     window.addEventListener('DOMContentLoaded', init);
   </script>
 </body>
