@@ -15,10 +15,10 @@
       "enforce_eager": true,
       "cpu_offload_gb": 12,
       "kv_cache_dtype": "auto",
-      "recommended_hardware": "2x GPUs via Ray/Pipeline Parallelism or single GPU >= 24GB VRAM"
+      "recommended_hardware": "Cluster 2x 8GB (PP=2 con ~3GB offload/nodo) oppure 3x 8GB (PP=3, 100% VRAM pura)"
     },
     "Qwen/Qwen2.5-14B-Instruct-AWQ": {
-      "description": "14B parameter model quantized to INT4 AWQ. Weights ~8.5 GB. Ideal for 12GB VRAM cards.",
+      "description": "14B parameter model quantized to INT4 AWQ. Weights ~8.5 GB. Ideal for 2x 8GB cluster (PP=2, zero offload, ~4.25 GB per GPU) or single 12GB GPU.",
       "model_id": "Qwen/Qwen2.5-14B-Instruct-AWQ",
       "quantization": "awq",
       "max_model_len": 4096,
@@ -26,7 +26,7 @@
       "enforce_eager": true,
       "cpu_offload_gb": 0,
       "kv_cache_dtype": "auto",
-      "recommended_hardware": "Single 12GB GPU (e.g., RTX 4070 / 4070 Ti)"
+      "recommended_hardware": "Cluster 2x 8GB (PP=2, 100% in VRAM) oppure Singola GPU 12GB"
     },
     "Qwen/Qwen2.5-7B-Instruct-AWQ": {
       "description": "7B parameter model quantized to INT4 AWQ. Weights ~4.5 GB. Perfect single-GPU testing benchmark for 8GB VRAM (RTX 4070 Laptop).",

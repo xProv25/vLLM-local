@@ -3,7 +3,7 @@
 # Start Ray Worker Node - Phase 2 Cluster
 # Target Head Node IP: 192.168.1.100:6379
 # Target Worker IP:    192.168.1.101 (or dynamically detected)
-# Hardware: RTX 4070 Ti / Laptop (12GB VRAM allocation: --num-gpus=1)
+# Hardware: RTX 4070 Laptop (8GB VRAM allocation: --num-gpus=1)
 # ==============================================================================
 set -euo pipefail
 

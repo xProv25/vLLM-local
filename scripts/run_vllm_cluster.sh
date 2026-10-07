@@ -23,8 +23,9 @@ if [[ $# -gt 0 ]]; then
 fi
 
 PARALLEL_STRATEGY="${PARALLEL_STRATEGY:-pp}" # 'pp' (Pipeline Parallelism) or 'tp' (Tensor Parallelism)
-MAX_MODEL_LEN="${MAX_MODEL_LEN:-4096}"
+MAX_MODEL_LEN="${MAX_MODEL_LEN:-2048}"
 GPU_MEM_UTIL="${GPU_MEM_UTIL:-0.92}"
+CPU_OFFLOAD_GB="${CPU_OFFLOAD_GB:-3}"
 PORT="${PORT:-8000}"
 HOST="${HOST:-0.0.0.0}"
 API_KEY="${API_KEY:-vllm-local-token}"
@@ -72,6 +73,14 @@ fi
 EXTRA_ARGS=()
 if [[ "${MODEL_NAME}" == *"AWQ"* ]] || [[ "${MODEL_NAME}" == *"awq"* ]]; then
     EXTRA_ARGS+=(--quantization awq)
+fi
+
+# On 2x 8GB nodes (16GB VRAM), 32B model (~19GB) requires ~3GB offload per node
+if [[ "${MODEL_NAME}" == *"32B"* ]]; then
+    if [[ "${CPU_OFFLOAD_GB}" -gt 0 ]]; then
+        echo "[!] Notice: 32B model on 2x 8GB nodes detected. Applying --cpu-offload-gb ${CPU_OFFLOAD_GB} to fit ~9.5GB stage weights."
+        EXTRA_ARGS+=(--cpu-offload-gb "${CPU_OFFLOAD_GB}")
+    fi
 fi
 
 exec vllm serve "${MODEL_NAME}" \

@@ -2,7 +2,7 @@
 # ==============================================================================
 # Start Ray Head Node (Master) - Phase 2 Cluster
 # Node IP: 192.168.1.100 (Static)
-# Hardware: RTX 4070 Laptop / Ti (12GB VRAM allocation: --num-gpus=1)
+# Hardware: RTX 4070 Laptop (8GB VRAM allocation: --num-gpus=1)
 # ==============================================================================
 set -euo pipefail
 

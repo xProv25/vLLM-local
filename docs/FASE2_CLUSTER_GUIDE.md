@@ -8,11 +8,17 @@ Questa guida documenta la procedura completa per configurare, avviare e testare 
 
 ### Specifiche Hardware Complessive
 - **Topologia**: 2 Nodi (1 Head Node / Master + 1 Worker Node)
-- **VRAM Aggregata**: **24 GB** (2 x 12 GB GDDR6X)
+- **VRAM Aggregata**: **16 GB** (2 x 8 GB GDDR6, es. RTX 4070 Laptop)
+- **VRAM Utile per Nodo**: ~7.0 - 7.2 GB (al netto dell'overhead del display Windows)
 - **Modello Target**: **`Qwen/Qwen2.5-32B-Instruct-AWQ`**
   - Dimensione pesi su disco/VRAM: ~18.5 - 19.5 GB.
-  - Su 2 nodi: ogni GPU carica circa **9.5 GB di pesi**, lasciando circa **2.5 GB di VRAM libera per GPU** dedicata alla KV Cache e alle attivazioni.
-  - Elimina completamente la necessità di CPU offloading.
+  - **Su 2 nodi da 8 GB (Pipeline Parallelism PP=2)**:
+    Ciascun nodo gestisce 32 layer (~9.5 GB di pesi). Poiché la VRAM per GPU è di 8 GB, ciascun nodo alloca ~6.8 GB in GPU e scarica un piccolo residuo di soli **~2.8 - 3 GB in RAM di sistema** (`--cpu-offload-gb 3`).
+    *(Confronto con nodo singolo: l'offload crolla da 12 GB a soli 3 GB per nodo, riducendo drasticamente il collo di bottiglia RAM/PCIe).*
+  - **Alternativa 100% VRAM (Zero CPU Offload)**:
+    Il modello **`Qwen/Qwen2.5-14B-Instruct-AWQ`** (~8.5 GB pesi totali) richiede solo **~4.25 GB per GPU**, risiedendo interamente nella VRAM da 8 GB con zero offload e massima velocità Gigabit.
+  - **Espansione a 3 Nodi (3x 8GB = 24GB)**:
+    Con 3 laptop da 8 GB (PP=3), il modello 32B richiede solo ~6.3 GB per nodo ed entra al 100% in VRAM pura senza alcun CPU offloading.
 
 ### Confronto Tecnico: Pipeline Parallelism (PP) vs Tensor Parallelism (TP) su Rete Gigabit (1 Gbps)
 
