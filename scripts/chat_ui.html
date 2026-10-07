@@ -52,7 +52,6 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* SVG Icon styles */
     .icon {
       width: 18px;
       height: 18px;
@@ -65,7 +64,7 @@
     }
 
     /* ============================================================
-       SIDEBAR (ChatGPT style)
+       SIDEBAR
        ============================================================ */
     .sidebar {
       width: var(--sidebar-width);
@@ -150,7 +149,6 @@
       border-color: var(--border-subtle);
     }
 
-    /* New Chat Pill Button */
     .sidebar-actions {
       padding: 6px 14px 12px 14px;
       display: flex;
@@ -194,7 +192,6 @@
       font-family: 'JetBrains Mono', monospace;
     }
 
-    /* History Search */
     .search-input-wrapper {
       position: relative;
       width: 100%;
@@ -226,7 +223,6 @@
       pointer-events: none;
     }
 
-    /* History List */
     .sidebar-history {
       flex: 1;
       overflow-y: auto;
@@ -265,7 +261,6 @@
       cursor: pointer;
       position: relative;
       transition: all var(--transition-speed);
-      group: true;
       user-select: none;
     }
 
@@ -329,7 +324,6 @@
       color: var(--danger);
     }
 
-    /* Sidebar Footer */
     .sidebar-footer {
       padding: 12px 14px;
       border-top: 1px solid var(--border-subtle);
@@ -398,7 +392,6 @@
       background: var(--bg-main);
     }
 
-    /* Top Navigation */
     .top-navbar {
       height: 56px;
       display: flex;
@@ -415,11 +408,11 @@
       display: flex;
       align-items: center;
       gap: 12px;
+      position: relative;
     }
 
-    /* Model Selector Dropdown (ChatGPT style) */
+    /* Model Selector Dropdown & Menu */
     .model-badge-dropdown {
-      position: relative;
       display: flex;
       align-items: center;
       gap: 8px;
@@ -429,9 +422,10 @@
       border-radius: var(--radius-sm);
       cursor: pointer;
       font-weight: 600;
-      font-size: 16px;
+      font-size: 15px;
       color: var(--text-primary);
-      transition: background var(--transition-speed);
+      transition: all var(--transition-speed);
+      user-select: none;
     }
 
     .model-badge-dropdown:hover {
@@ -447,6 +441,47 @@
       border: 1px solid rgba(16, 163, 127, 0.3);
       padding: 2px 7px;
       border-radius: 999px;
+    }
+
+    /* Model Dropdown Menu */
+    .model-dropdown-menu {
+      position: absolute;
+      top: 48px;
+      left: 46px;
+      background: var(--bg-modal);
+      border: 1px solid var(--border-active);
+      border-radius: var(--radius-md);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
+      min-width: 320px;
+      padding: 8px;
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+      z-index: 60;
+      animation: modalFadeIn 0.15s ease;
+    }
+
+    .model-menu-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 12px;
+      border-radius: var(--radius-sm);
+      color: var(--text-secondary);
+      font-size: 13px;
+      cursor: pointer;
+      transition: all var(--transition-speed);
+    }
+
+    .model-menu-item:hover {
+      background: var(--bg-surface);
+      color: var(--text-primary);
+    }
+
+    .model-menu-item.active {
+      background: rgba(16, 163, 127, 0.15);
+      color: var(--text-primary);
+      font-weight: 500;
     }
 
     .nav-right {
@@ -533,7 +568,7 @@
       justify-content: flex-end;
     }
 
-    /* Welcome Hero (ChatGPT empty state) */
+    /* Welcome Hero */
     .welcome-hero {
       max-width: 760px;
       margin: auto auto;
@@ -677,7 +712,6 @@
       font-weight: 600;
     }
 
-    /* Turn Stats & Actions */
     .turn-footer {
       display: flex;
       align-items: center;
@@ -800,7 +834,7 @@
     }
 
     /* ============================================================
-       SETTINGS MODAL (ChatGPT style)
+       SETTINGS MODAL
        ============================================================ */
     .modal-overlay {
       position: fixed;
@@ -821,7 +855,7 @@
 
     .modal-box {
       width: 90%;
-      max-width: 620px;
+      max-width: 640px;
       background: var(--bg-modal);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-lg);
@@ -829,7 +863,7 @@
       display: flex;
       flex-direction: column;
       overflow: hidden;
-      max-height: 85vh;
+      max-height: 88vh;
     }
 
     .modal-header {
@@ -913,7 +947,7 @@
     .form-desc {
       font-size: 12px;
       color: var(--text-muted);
-      line-height: 1.4;
+      line-height: 1.45;
     }
 
     .form-input, .form-select, .form-textarea {
@@ -954,8 +988,59 @@
       font-family: 'JetBrains Mono', monospace;
       font-size: 13px;
       color: var(--accent);
-      min-width: 44px;
+      min-width: 48px;
       text-align: right;
+    }
+
+    /* Token Explanation Box */
+    .token-breakdown-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(16, 163, 127, 0.25);
+      border-radius: var(--radius-md);
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .token-bar-container {
+      width: 100%;
+      height: 10px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 999px;
+      overflow: hidden;
+      display: flex;
+    }
+
+    .token-bar-input {
+      background: #3b82f6;
+      height: 100%;
+      transition: width 0.2s ease;
+    }
+
+    .token-bar-output {
+      background: var(--accent);
+      height: 100%;
+      transition: width 0.2s ease;
+    }
+
+    .token-legend {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11.5px;
+      color: var(--text-muted);
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .legend-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
     }
 
     .modal-footer {
@@ -1013,7 +1098,6 @@
       background: rgba(239, 68, 68, 0.25);
     }
 
-    /* Preset prompt pill */
     .preset-pills {
       display: flex;
       gap: 6px;
@@ -1035,6 +1119,17 @@
       background: var(--bg-surface);
       color: var(--text-primary);
       border-color: var(--border-active);
+    }
+
+    .tag-output-only {
+      background: rgba(16, 163, 127, 0.18);
+      color: var(--accent);
+      border: 1px solid rgba(16, 163, 127, 0.35);
+      border-radius: 4px;
+      padding: 1px 6px;
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
     }
   </style>
 </head>
@@ -1071,10 +1166,8 @@
       </div>
     </div>
 
-    <!-- Conversations History List -->
-    <div class="sidebar-history" id="sidebarHistory">
-      <!-- Injected by JavaScript -->
-    </div>
+    <!-- History List -->
+    <div class="sidebar-history" id="sidebarHistory"></div>
 
     <!-- Footer: Settings & GPU status -->
     <div class="sidebar-footer">
@@ -1104,15 +1197,27 @@
           <svg class="icon" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 3v18"/></svg>
         </button>
 
-        <div class="model-badge-dropdown" id="modelSelectorDropdown" title="Seleziona modello">
+        <!-- Model Selector Dropdown Header -->
+        <div class="model-badge-dropdown" id="modelSelectorDropdown" title="Clicca per cambiare modello o aggiornare">
           <span id="activeModelName">Qwen/Qwen2.5-7B-Instruct-AWQ</span>
           <span class="model-sub-badge">vLLM 0.6.3</span>
           <svg class="icon" style="width: 14px; height: 14px; color: var(--text-muted);" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>
         </div>
+
+        <!-- Floating Model Selector Menu -->
+        <div class="model-dropdown-menu" id="modelDropdownMenu">
+          <div style="padding: 6px 10px; font-size: 11px; color: var(--text-muted); font-weight: 600; text-transform: uppercase;">Modelli Attivi su vLLM</div>
+          <div id="modelMenuList"></div>
+          <div style="border-top: 1px solid var(--border-subtle); margin-top: 6px; padding-top: 6px;">
+            <div class="model-menu-item" id="refreshModelsMenuItem">
+              <span>🔄 Aggiorna lista dal server</span>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="nav-right">
-        <button class="icon-btn" id="exportChatBtn" title="Esporta conversazione corrente in Markdown">
+        <button class="icon-btn" id="exportChatBtn" title="Esporta conversazione in Markdown">
           <svg class="icon" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
         </button>
         <button class="icon-btn" id="clearActiveChatBtn" title="Svuota messaggi chat">
@@ -1122,9 +1227,7 @@
     </header>
 
     <!-- Chat Viewport -->
-    <div class="chat-viewport" id="chatViewport">
-      <!-- Dynamic Messages or Welcome Hero -->
-    </div>
+    <div class="chat-viewport" id="chatViewport"></div>
 
     <!-- Floating Input Dock -->
     <div class="input-dock">
@@ -1135,7 +1238,7 @@
         </button>
       </div>
       <div class="input-disclaimer">
-        vLLM Server locale su WSL2 • GPU RTX 4070 Laptop (8GB VRAM) • PagedAttention & Continuous Batching
+        vLLM Server locale • Context limit: 2048 token • RTX 4070 8GB VRAM
       </div>
     </div>
   </main>
@@ -1146,7 +1249,7 @@
   <div class="modal-overlay" id="settingsModal">
     <div class="modal-box">
       <div class="modal-header">
-        <div class="modal-title">Impostazioni</div>
+        <div class="modal-title">Impostazioni vLLM Studio</div>
         <button class="icon-btn" id="closeSettingsBtn">
           <svg class="icon" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>
         </button>
@@ -1163,13 +1266,13 @@
         <div class="tab-content active" id="tab-general">
           <div class="form-group">
             <div class="form-label">Host API Server vLLM</div>
-            <div class="form-desc">L'endpoint REST compatibile con OpenAI esposto da vLLM.</div>
+            <div class="form-desc">L'endpoint REST compatibile con OpenAI esposto da vLLM (porta predefinita 8000).</div>
             <input type="text" id="cfgApiHost" class="form-input" value="http://localhost:8000/v1">
           </div>
 
           <div class="form-group">
             <div class="form-label">API Key vLLM</div>
-            <div class="form-desc">Token di autenticazione configurato nel parametro --api-key.</div>
+            <div class="form-desc">Token di autenticazione configurato nel parametro <code>--api-key</code>.</div>
             <input type="password" id="cfgApiKey" class="form-input" value="vllm-local-token">
           </div>
 
@@ -1182,29 +1285,62 @@
           </div>
         </div>
 
-        <!-- Tab 2: Parametri Inferenza -->
+        <!-- Tab 2: Parametri Inferenza & Token Explanation -->
         <div class="tab-content" id="tab-model">
+          <!-- Token Slider with Explicit Explanation -->
+          <div class="form-group">
+            <div class="form-label">
+              <span style="display: flex; align-items: center; gap: 8px;">
+                <span>Max Tokens Risposta</span>
+                <span class="tag-output-only">SOLO OUTPUT</span>
+              </span>
+              <span class="slider-number" id="cfgMaxTokensVal">1024</span>
+            </div>
+            
+            <div class="form-desc">
+              <strong>Per cosa sta questa barra?</strong> Rappresenta il numero massimo di token che il modello può generare nella <strong>RISPOSTA (Output)</strong>. Non limita il tuo testo in input.
+            </div>
+
+            <div class="slider-row">
+              <input type="range" id="cfgMaxTokens" min="128" max="1536" step="64" value="1024">
+            </div>
+
+            <!-- Visual Context Breakdown Box -->
+            <div class="token-breakdown-card">
+              <div style="display: flex; justify-content: space-between; font-size: 12px;">
+                <span>Ripartizione Finestra di Contesto Totale (<strong>2048 token</strong>):</span>
+                <span id="tokenEstimateText" style="color: var(--accent); font-weight: 500;">~750 parole max risposta</span>
+              </div>
+              <div class="token-bar-container">
+                <div class="token-bar-input" id="tokenBarInput" style="width: 50%;" title="Spazio riservato per Prompt & Cronologia (Input)"></div>
+                <div class="token-bar-output" id="tokenBarOutput" style="width: 50%;" title="Spazio massimo per la Risposta (Output)"></div>
+              </div>
+              <div class="token-legend">
+                <div class="legend-item">
+                  <div class="legend-dot" style="background: #3b82f6;"></div>
+                  <span id="legendInputText">Input disponibile (Prompt + Chat): ~1024 token</span>
+                </div>
+                <div class="legend-item">
+                  <div class="legend-dot" style="background: var(--accent);"></div>
+                  <span id="legendOutputText">Output consentito (Risposta): 1024 token</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Temperature Slider -->
           <div class="form-group">
             <div class="form-label">
               <span>Temperatura</span>
               <span class="slider-number" id="cfgTempVal">0.7</span>
             </div>
-            <div class="form-desc">Valori più bassi favoriscono risposte deterministiche; più alti stimolano creatività.</div>
+            <div class="form-desc">0.0 = massima precisione logica; 0.7 = bilanciato naturale; 1.2+ = alta creatività.</div>
             <div class="slider-row">
               <input type="range" id="cfgTemperature" min="0" max="1.5" step="0.05" value="0.7">
             </div>
           </div>
 
-          <div class="form-group">
-            <div class="form-label">
-              <span>Lunghezza Massima Generazione (Max Tokens)</span>
-              <span class="slider-number" id="cfgMaxTokensVal">1024</span>
-            </div>
-            <div class="slider-row">
-              <input type="range" id="cfgMaxTokens" min="128" max="2048" step="64" value="1024">
-            </div>
-          </div>
-
+          <!-- System Prompt with Presets -->
           <div class="form-group">
             <div class="form-label">System Prompt Predefinito</div>
             <div class="preset-pills" style="margin-bottom: 6px;">
@@ -1244,6 +1380,7 @@
        ============================================================ -->
   <script>
     // --- STATE MANAGEMENT ---
+    const TOTAL_CONTEXT_LIMIT = 2048; // Total context length of vLLM server
     const STORAGE_KEY_CONVS = 'vllm_studio_conversations_v1';
     const STORAGE_KEY_ACTIVE = 'vllm_studio_active_id_v1';
     const STORAGE_KEY_CONFIG = 'vllm_studio_config_v1';
@@ -1257,27 +1394,31 @@
       systemPrompt: 'Sei un assistente AI avanzato che gira localmente su vLLM con GPU NVIDIA RTX 4070. Rispondi in italiano in modo chiaro, preciso ed elegante.'
     };
 
+    let serverModels = ['Qwen/Qwen2.5-7B-Instruct-AWQ'];
     let conversations = [];
     let activeConversationId = null;
     let isGenerating = false;
     let abortController = null;
 
-    // Load saved config
-    const savedConfig = localStorage.getItem(STORAGE_KEY_CONFIG);
-    if (savedConfig) {
-      try { config = { ...config, ...JSON.parse(savedConfig) }; } catch(e) {}
-    }
+    // Load saved config safely
+    try {
+      const savedConfig = localStorage.getItem(STORAGE_KEY_CONFIG);
+      if (savedConfig) config = { ...config, ...JSON.parse(savedConfig) };
+    } catch(e) { console.warn('Config load error:', e); }
 
-    // Load saved conversations
-    const savedConvs = localStorage.getItem(STORAGE_KEY_CONVS);
-    if (savedConvs) {
-      try { conversations = JSON.parse(savedConvs); } catch(e) { conversations = []; }
-    }
-    const savedActiveId = localStorage.getItem(STORAGE_KEY_ACTIVE);
-    if (savedActiveId && conversations.some(c => c.id === savedActiveId)) {
-      activeConversationId = savedActiveId;
-    } else if (conversations.length > 0) {
-      activeConversationId = conversations[0].id;
+    // Load saved conversations safely
+    try {
+      const savedConvs = localStorage.getItem(STORAGE_KEY_CONVS);
+      if (savedConvs) conversations = JSON.parse(savedConvs);
+      const savedActiveId = localStorage.getItem(STORAGE_KEY_ACTIVE);
+      if (savedActiveId && conversations.some(c => c.id === savedActiveId)) {
+        activeConversationId = savedActiveId;
+      } else if (conversations.length > 0) {
+        activeConversationId = conversations[0].id;
+      }
+    } catch(e) {
+      console.warn('Conversations load error:', e);
+      conversations = [];
     }
 
     // --- DOM REFERENCES ---
@@ -1290,13 +1431,18 @@
     const openSettingsBtn = document.getElementById('openSettingsBtn');
 
     const activeModelName = document.getElementById('activeModelName');
+    const modelSelectorDropdown = document.getElementById('modelSelectorDropdown');
+    const modelDropdownMenu = document.getElementById('modelDropdownMenu');
+    const modelMenuList = document.getElementById('modelMenuList');
+    const refreshModelsMenuItem = document.getElementById('refreshModelsMenuItem');
+
     const exportChatBtn = document.getElementById('exportChatBtn');
     const clearActiveChatBtn = document.getElementById('clearActiveChatBtn');
     const chatViewport = document.getElementById('chatViewport');
     const chatInput = document.getElementById('chatInput');
     const sendActionBtn = document.getElementById('sendActionBtn');
 
-    // Settings Modal
+    // Settings Modal references
     const settingsModal = document.getElementById('settingsModal');
     const closeSettingsBtn = document.getElementById('closeSettingsBtn');
     const cancelSettingsBtn = document.getElementById('cancelSettingsBtn');
@@ -1314,9 +1460,15 @@
     const cfgMaxTokensVal = document.getElementById('cfgMaxTokensVal');
     const cfgSystemPrompt = document.getElementById('cfgSystemPrompt');
 
+    const tokenBarInput = document.getElementById('tokenBarInput');
+    const tokenBarOutput = document.getElementById('tokenBarOutput');
+    const tokenEstimateText = document.getElementById('tokenEstimateText');
+    const legendInputText = document.getElementById('legendInputText');
+    const legendOutputText = document.getElementById('legendOutputText');
+
     // --- INITIALIZATION ---
     function init() {
-      // Sync form config
+      // Sync form fields
       cfgApiHost.value = config.apiHost;
       cfgApiKey.value = config.apiKey;
       cfgTemperature.value = config.temperature;
@@ -1325,6 +1477,8 @@
       cfgMaxTokensVal.textContent = config.maxTokens;
       cfgSystemPrompt.value = config.systemPrompt;
       activeModelName.textContent = config.model;
+
+      updateTokenBreakdownUI(config.maxTokens);
 
       if (!activeConversationId) {
         createNewConversation(false);
@@ -1336,10 +1490,41 @@
       setupEventListeners();
     }
 
-    // --- CONVERSATION CRUD ---
+    // --- URL SANITIZATION ---
+    function sanitizeApiUrl(url) {
+      if (!url) return 'http://localhost:8000/v1';
+      let clean = url.trim().replace(/\/+$/, '');
+      if (!clean.endsWith('/v1')) {
+        clean += '/v1';
+      }
+      return clean;
+    }
+
+    // --- TOKEN BREAKDOWN CALCULATION ---
+    function updateTokenBreakdownUI(outputTokens) {
+      const outTok = parseInt(outputTokens);
+      const inTok = Math.max(128, TOTAL_CONTEXT_LIMIT - outTok);
+      
+      const outPercent = ((outTok / TOTAL_CONTEXT_LIMIT) * 100).toFixed(1);
+      const inPercent = (100 - outPercent).toFixed(1);
+
+      tokenBarInput.style.width = inPercent + '%';
+      tokenBarOutput.style.width = outPercent + '%';
+
+      const wordsEstimate = Math.round(outTok * 0.75);
+      tokenEstimateText.textContent = `~${wordsEstimate} parole max risposta`;
+      legendInputText.textContent = `Input disponibile (Prompt + Chat): ~${inTok} token`;
+      legendOutputText.textContent = `Output consentito (Risposta): ${outTok} token`;
+    }
+
+    // --- CONVERSATION CRUD & PERSISTENCE ---
     function saveState() {
-      localStorage.setItem(STORAGE_KEY_CONVS, JSON.stringify(conversations));
-      localStorage.setItem(STORAGE_KEY_ACTIVE, activeConversationId || '');
+      try {
+        localStorage.setItem(STORAGE_KEY_CONVS, JSON.stringify(conversations));
+        localStorage.setItem(STORAGE_KEY_ACTIVE, activeConversationId || '');
+      } catch(e) {
+        console.warn('Storage quota exceeded or disabled:', e);
+      }
     }
 
     function createNewConversation(switchActive = true) {
@@ -1398,14 +1583,14 @@
       renderChatMessages();
     }
 
-    // --- RENDER SIDEBAR HISTORY (ChatGPT grouping) ---
+    // --- RENDER SIDEBAR HISTORY (ChatGPT style) ---
     function renderSidebarHistory() {
       const searchTerm = (searchHistoryInput.value || '').toLowerCase().trim();
       sidebarHistory.innerHTML = '';
 
       const filtered = conversations.filter(c => 
         c.title.toLowerCase().includes(searchTerm) ||
-        c.messages.some(m => m.content.toLowerCase().includes(searchTerm))
+        c.messages.some(m => m.content && m.content.toLowerCase().includes(searchTerm))
       );
 
       if (filtered.length === 0) {
@@ -1417,7 +1602,6 @@
         return;
       }
 
-      // Grouping: Oggi, Ieri, Ultimi 7 giorni, Precedenti
       const now = new Date();
       const startOfToday = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
       const startOfYesterday = startOfToday - 86400000;
@@ -1466,7 +1650,6 @@
             </div>
           `;
 
-          // Edit title action
           const editBtn = item.querySelector('.history-action-btn.edit');
           editBtn.onclick = (e) => {
             e.stopPropagation();
@@ -1475,7 +1658,6 @@
             if (newTitle !== null) renameConversation(conv.id, newTitle);
           };
 
-          // Delete action
           const delBtn = item.querySelector('.history-action-btn.delete');
           delBtn.onclick = (e) => deleteConversation(conv.id, e);
 
@@ -1490,7 +1672,6 @@
       chatViewport.innerHTML = '';
 
       if (!conv || conv.messages.length === 0) {
-        // Welcome Hero empty state
         chatViewport.innerHTML = `
           <div class="welcome-hero">
             <div class="welcome-logo">
@@ -1498,7 +1679,7 @@
             </div>
             <div class="welcome-title">Come posso aiutarti oggi?</div>
             <div class="welcome-subtitle">
-              In esecuzione su server locale <strong>vLLM</strong> con GPU NVIDIA RTX 4070 (8GB VRAM). Pesi quantizzati AWQ a 4-bit con PagedAttention.
+              In esecuzione su server locale <strong>vLLM</strong> con GPU NVIDIA RTX 4070 (8GB VRAM). Modello quantizzato AWQ 4-bit con PagedAttention.
             </div>
 
             <div class="prompt-suggestions">
@@ -1518,7 +1699,6 @@
           </div>
         `;
 
-        // Bind suggestion clicks
         document.querySelectorAll('.prompt-card').forEach(card => {
           card.onclick = () => {
             chatInput.value = card.dataset.prompt;
@@ -1528,7 +1708,6 @@
         return;
       }
 
-      // Render turns
       conv.messages.forEach(msg => {
         appendTurnToViewport(msg.role, msg.content, msg.stats);
       });
@@ -1556,7 +1735,7 @@
                 <span class="stat-badge">${stats.totalTokens} tokens</span>
                 <span class="stat-badge">${stats.durationSec}s</span>
                 <div class="turn-actions">
-                  <button class="history-action-btn copy-msg" title="Copia risposta">
+                  <button class="history-action-btn copy-msg" title="Copia risposta" data-text="${encodeURIComponent(content)}">
                     <svg class="icon" style="width: 14px; height: 14px;" viewBox="0 0 24 24"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
                   </button>
                 </div>
@@ -1564,24 +1743,42 @@
             ` : ''}
           </div>
         `;
-
-        const copyBtn = turnDiv.querySelector('.copy-msg');
-        if (copyBtn) {
-          copyBtn.onclick = () => {
-            navigator.clipboard.writeText(content);
-            copyBtn.style.color = 'var(--accent)';
-            setTimeout(() => copyBtn.style.color = '', 1500);
-          };
-        }
       }
 
       chatViewport.appendChild(turnDiv);
-      bindCodeCopyButtons(turnDiv);
       return turnDiv;
     }
 
     function scrollViewportToBottom() {
       chatViewport.scrollTop = chatViewport.scrollHeight;
+    }
+
+    // --- CONTEXT TRIMMING (Prevents 400 Context Limit Crash) ---
+    function prepareSafeMessagePayload(convMessages, maxOutputTokens) {
+      const budgetForInput = Math.max(384, TOTAL_CONTEXT_LIMIT - maxOutputTokens - 64);
+      const payload = [];
+
+      if (config.systemPrompt && config.systemPrompt.trim()) {
+        payload.push({ role: 'system', content: config.systemPrompt.trim() });
+      }
+
+      // Estimate tokens roughly (~4 chars = 1 token)
+      let currentEstTokens = (config.systemPrompt || '').length / 4;
+      const reversedSafe = [];
+
+      for (let i = convMessages.length - 1; i >= 0; i--) {
+        const msg = convMessages[i];
+        const msgEst = (msg.content || '').length / 4;
+        if (currentEstTokens + msgEst <= budgetForInput || reversedSafe.length === 0) {
+          reversedSafe.unshift({ role: msg.role, content: msg.content });
+          currentEstTokens += msgEst;
+        } else {
+          break; // Stop taking older messages to prevent server crash
+        }
+      }
+
+      payload.push(...reversedSafe);
+      return payload;
     }
 
     // --- SEND MESSAGE & STREAMING ---
@@ -1592,25 +1789,20 @@
       const conv = getActiveConversation();
       if (!conv) return;
 
-      // First message auto-title
       if (conv.messages.length === 0) {
         conv.title = text.length > 28 ? text.substring(0, 28) + '...' : text;
         renderSidebarHistory();
       }
 
-      // Add user turn
       conv.messages.push({ role: 'user', content: text });
       conv.updatedAt = Date.now();
       saveState();
 
-      // Clear input
       chatInput.value = '';
       chatInput.style.height = 'auto';
 
-      // Render updated
       renderChatMessages();
 
-      // Prepare bot turn placeholder
       isGenerating = true;
       updateSendButtonState();
       abortController = new AbortController();
@@ -1619,18 +1811,16 @@
       const markdownTarget = botTurnDiv.querySelector('.rendered-markdown');
       scrollViewportToBottom();
 
-      const payloadMessages = [];
-      if (config.systemPrompt && config.systemPrompt.trim()) {
-        payloadMessages.push({ role: 'system', content: config.systemPrompt.trim() });
-      }
-      payloadMessages.push(...conv.messages.map(m => ({ role: m.role, content: m.content })));
+      const sanitizedHost = sanitizeApiUrl(config.apiHost);
+      const outputTokens = parseInt(config.maxTokens);
+      const payloadMessages = prepareSafeMessagePayload(conv.messages, outputTokens);
 
       const startTime = performance.now();
       let streamedContent = '';
       let tokensGenerated = 0;
 
       try {
-        const response = await fetch(`${config.apiHost}/chat/completions`, {
+        const response = await fetch(`${sanitizedHost}/chat/completions`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -1640,14 +1830,15 @@
             model: config.model,
             messages: payloadMessages,
             temperature: parseFloat(config.temperature),
-            max_tokens: parseInt(config.maxTokens),
+            max_tokens: outputTokens,
             stream: true
           }),
           signal: abortController.signal
         });
 
         if (!response.ok) {
-          throw new Error(`HTTP ${response.status}: ${await response.text()}`);
+          const errBody = await response.text();
+          throw new Error(`HTTP ${response.status}: ${errBody}`);
         }
 
         const reader = response.body.getReader();
@@ -1676,7 +1867,6 @@
                 streamedContent += delta;
                 tokensGenerated++;
                 markdownTarget.innerHTML = formatMarkdown(streamedContent);
-                bindCodeCopyButtons(botTurnDiv);
                 scrollViewportToBottom();
               }
             } catch (e) {}
@@ -1699,7 +1889,13 @@
           conv.messages.push({ role: 'assistant', content: streamedContent + ' (interrotta)' });
           saveState();
         } else {
-          markdownTarget.innerHTML = `<span style="color: var(--danger)">Errore durante la generazione: ${err.message}</span>`;
+          markdownTarget.innerHTML = `
+            <div style="padding: 10px; background: rgba(239, 68, 68, 0.12); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 8px;">
+              <span style="color: var(--danger); font-weight: 600;">Errore nella risposta da vLLM:</span>
+              <p style="font-size: 13px; margin-top: 6px; color: var(--text-primary); font-family: monospace;">${escapeHtml(err.message)}</p>
+              <span style="font-size: 11.5px; color: var(--text-muted); display: block; margin-top: 6px;">Suggerimento: Se l'errore riguarda il limite di contesto (2048), riduci i Max Tokens Risposta nelle Impostazioni o pulisci la chat.</span>
+            </div>
+          `;
         }
       } finally {
         isGenerating = false;
@@ -1733,18 +1929,23 @@
       }
     }
 
-    // --- AUTO FETCH MODELS ---
+    // --- AUTO FETCH & SWITCH MODELS ---
     async function fetchServerModels() {
+      const sanitized = sanitizeApiUrl(config.apiHost);
       try {
-        const res = await fetch(`${config.apiHost}/models`, {
+        const res = await fetch(`${sanitized}/models`, {
           headers: { 'Authorization': `Bearer ${config.apiKey}` }
         });
         if (res.ok) {
           const data = await res.json();
           if (data && data.data && data.data.length > 0) {
-            config.model = data.data[0].id;
+            serverModels = data.data.map(m => m.id);
+            if (!serverModels.includes(config.model)) {
+              config.model = serverModels[0];
+            }
             activeModelName.textContent = config.model;
             saveConfig();
+            renderModelDropdownList();
           }
         }
       } catch (err) {
@@ -1752,13 +1953,35 @@
       }
     }
 
-    function saveConfig() {
-      localStorage.setItem(STORAGE_KEY_CONFIG, JSON.stringify(config));
+    function renderModelDropdownList() {
+      modelMenuList.innerHTML = '';
+      serverModels.forEach(m => {
+        const item = document.createElement('div');
+        item.className = 'model-menu-item' + (m === config.model ? ' active' : '');
+        item.innerHTML = `
+          <span>${escapeHtml(m)}</span>
+          ${m === config.model ? '<span style="color: var(--accent);">✓</span>' : ''}
+        `;
+        item.onclick = () => {
+          config.model = m;
+          activeModelName.textContent = m;
+          saveConfig();
+          modelDropdownMenu.style.display = 'none';
+          renderModelDropdownList();
+        };
+        modelMenuList.appendChild(item);
+      });
     }
 
-    // --- EVENT LISTENERS ---
+    function saveConfig() {
+      try {
+        localStorage.setItem(STORAGE_KEY_CONFIG, JSON.stringify(config));
+      } catch(e) {}
+    }
+
+    // --- EVENT LISTENERS & DELEGATION ---
     function setupEventListeners() {
-      // Sidebar Collapse / Expand
+      // Sidebar Toggle
       collapseSidebarBtn.onclick = () => {
         sidebar.classList.add('collapsed');
         openSidebarBtn.style.display = 'flex';
@@ -1769,37 +1992,56 @@
         openSidebarBtn.style.display = 'none';
       };
 
+      // Model Dropdown Click Toggle
+      modelSelectorDropdown.onclick = (e) => {
+        e.stopPropagation();
+        const isOpen = modelDropdownMenu.style.display === 'flex';
+        modelDropdownMenu.style.display = isOpen ? 'none' : 'flex';
+        if (!isOpen) renderModelDropdownList();
+      };
+
+      refreshModelsMenuItem.onclick = (e) => {
+        e.stopPropagation();
+        fetchServerModels();
+      };
+
+      // Close dropdown when clicking outside
+      window.addEventListener('click', () => {
+        if (modelDropdownMenu) modelDropdownMenu.style.display = 'none';
+      });
+
       // New Chat Button
       newChatBtn.onclick = () => createNewConversation(true);
 
-      // Search History
+      // Search History Filter
       searchHistoryInput.oninput = () => renderSidebarHistory();
 
       // Clear Active Chat
       clearActiveChatBtn.onclick = () => {
         const conv = getActiveConversation();
-        if (conv && confirm('Svuotare i messaggi di questa conversazione?')) {
+        if (conv && confirm('Svuotare tutti i messaggi di questa conversazione?')) {
+          if (isGenerating) stopGeneration();
           conv.messages = [];
           saveState();
           renderChatMessages();
         }
       };
 
-      // Export Current Chat
+      // Export Current Chat to Markdown
       exportChatBtn.onclick = () => {
         const conv = getActiveConversation();
         if (!conv || conv.messages.length === 0) {
-          alert('Nessun messaggio da esportare.');
+          alert('Nessun messaggio presente da esportare.');
           return;
         }
-        let md = `# ${conv.title}\n*Esportato da vLLM Studio il ${new Date().toLocaleString()}*\n\n---\n\n`;
+        let md = `# ${conv.title}\n*Esportato da vLLM Studio il ${new Date().toLocaleString()}*\n*Modello: ${config.model}*\n\n---\n\n`;
         conv.messages.forEach(m => {
           md += `### ${m.role === 'user' ? '👤 Utente' : '🤖 vLLM Assistant'}\n\n${m.content}\n\n`;
         });
         downloadFile(`${conv.title.replace(/[^a-z0-9]/gi, '_')}.md`, md, 'text/markdown');
       };
 
-      // Auto-grow textarea & Enter key
+      // Input auto-growth & Enter key handling
       chatInput.oninput = () => {
         chatInput.style.height = 'auto';
         chatInput.style.height = Math.min(chatInput.scrollHeight, 180) + 'px';
@@ -1812,7 +2054,7 @@
         }
       };
 
-      // Keyboard shortcuts
+      // Global Keyboard Shortcuts
       window.onkeydown = (e) => {
         if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
           e.preventDefault();
@@ -1826,12 +2068,13 @@
             collapseSidebarBtn.click();
           }
         }
-        if (e.key === 'Escape' && settingsModal.style.display === 'flex') {
-          closeSettingsModal();
+        if (e.key === 'Escape') {
+          if (settingsModal.style.display === 'flex') closeSettingsModal();
+          if (modelDropdownMenu) modelDropdownMenu.style.display = 'none';
         }
       };
 
-      // Settings Modal Tabs & Open/Close
+      // Settings Modal Tabs & Sliders
       openSettingsBtn.onclick = () => openSettingsModal();
       closeSettingsBtn.onclick = () => closeSettingsModal();
       cancelSettingsBtn.onclick = () => closeSettingsModal();
@@ -1845,18 +2088,20 @@
         };
       });
 
-      // Settings Sliders
       cfgTemperature.oninput = () => cfgTempVal.textContent = cfgTemperature.value;
-      cfgMaxTokens.oninput = () => cfgMaxTokensVal.textContent = cfgMaxTokens.value;
+      
+      cfgMaxTokens.oninput = () => {
+        cfgMaxTokensVal.textContent = cfgMaxTokens.value;
+        updateTokenBreakdownUI(cfgMaxTokens.value);
+      };
 
-      // Preset Pills
       document.querySelectorAll('.preset-pill').forEach(pill => {
         pill.onclick = () => cfgSystemPrompt.value = pill.dataset.prompt;
       });
 
-      // Save Settings
+      // Save Settings Action
       saveSettingsBtn.onclick = () => {
-        config.apiHost = cfgApiHost.value.trim();
+        config.apiHost = sanitizeApiUrl(cfgApiHost.value);
         config.apiKey = cfgApiKey.value.trim();
         config.temperature = parseFloat(cfgTemperature.value);
         config.maxTokens = parseInt(cfgMaxTokens.value);
@@ -1866,12 +2111,13 @@
         fetchServerModels();
       };
 
-      // Test Connection
+      // Test Connection Action
       testConnBtn.onclick = async () => {
         connTestResult.textContent = 'Verifica in corso...';
         connTestResult.style.color = 'var(--text-muted)';
+        const sanitized = sanitizeApiUrl(cfgApiHost.value);
         try {
-          const res = await fetch(`${cfgApiHost.value.trim()}/models`, {
+          const res = await fetch(`${sanitized}/models`, {
             headers: { 'Authorization': `Bearer ${cfgApiKey.value.trim()}` }
           });
           if (res.ok) {
@@ -1889,15 +2135,15 @@
         }
       };
 
-      // Export All JSON
+      // Export JSON All
       exportAllJsonBtn.onclick = () => {
         const json = JSON.stringify(conversations, null, 2);
         downloadFile(`vllm_studio_backup_${Date.now()}.json`, json, 'application/json');
       };
 
-      // Delete All History
+      // Delete All History Action
       deleteAllHistoryBtn.onclick = () => {
-        if (confirm('ATTENZIONE: Eliminare tutte le conversazioni? L\'azione non è reversibile.')) {
+        if (confirm('ATTENZIONE: Eliminare tutte le conversazioni salvate? L\'operazione non è reversibile.')) {
           conversations = [];
           activeConversationId = null;
           saveState();
@@ -1905,6 +2151,29 @@
           createNewConversation(false);
         }
       };
+
+      // Event Delegation for Copy Buttons (Crash-proof & High Performance)
+      chatViewport.addEventListener('click', (e) => {
+        const copyCode = e.target.closest('.copy-code-btn');
+        if (copyCode) {
+          const raw = decodeURIComponent(copyCode.dataset.code || '');
+          navigator.clipboard.writeText(raw);
+          const span = copyCode.querySelector('span');
+          if (span) {
+            span.textContent = 'Copiato!';
+            setTimeout(() => span.textContent = 'Copia', 1500);
+          }
+          return;
+        }
+
+        const copyMsg = e.target.closest('.copy-msg');
+        if (copyMsg) {
+          const raw = decodeURIComponent(copyMsg.dataset.text || '');
+          navigator.clipboard.writeText(raw);
+          copyMsg.style.color = 'var(--accent)';
+          setTimeout(() => copyMsg.style.color = '', 1500);
+        }
+      });
     }
 
     function openSettingsModal() {
@@ -1941,6 +2210,11 @@
       if (!content) return '';
       let safe = escapeHtml(content);
 
+      // Handle unclosed code block during active streaming
+      if ((safe.match(/```/g) || []).length % 2 === 1) {
+        safe += '\n```';
+      }
+
       // Fenced code blocks ```lang\ncode```
       safe = safe.replace(/```([a-zA-Z0-9_\-\+]*)\n([\s\S]*?)```/g, (match, lang, code) => {
         const langLabel = lang || 'code';
@@ -1958,13 +2232,11 @@
         `;
       });
 
-      // Inline code `code`
+      // Inline code
       safe = safe.replace(/`([^`]+)`/g, '<code>$1</code>');
 
-      // Bold **text**
+      // Bold & Italic
       safe = safe.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
-
-      // Italic *text*
       safe = safe.replace(/\*([^*]+)\*/g, '<em>$1</em>');
 
       // Headings
@@ -1972,31 +2244,17 @@
       safe = safe.replace(/^## (.*$)/gim, '<h2>$1</h2>');
       safe = safe.replace(/^# (.*$)/gim, '<h1>$1</h1>');
 
-      // Unordered lists
+      // Lists
       safe = safe.replace(/^\s*[-*]\s+(.*)$/gim, '<li>$1</li>');
       safe = safe.replace(/(<li>.*<\/li>)/gim, '<ul>$1</ul>');
 
-      // Line breaks outside code
+      // Line breaks outside code blocks
       safe = safe.replace(/\n/g, '<br>');
 
       return safe;
     }
 
-    function bindCodeCopyButtons(container) {
-      container.querySelectorAll('.copy-code-btn').forEach(btn => {
-        btn.onclick = () => {
-          const raw = decodeURIComponent(btn.dataset.code);
-          navigator.clipboard.writeText(raw);
-          const label = btn.querySelector('span');
-          if (label) {
-            label.textContent = 'Copiato!';
-            setTimeout(() => label.textContent = 'Copia', 1500);
-          }
-        };
-      });
-    }
-
-    // Launch!
+    // Launch application
     window.addEventListener('DOMContentLoaded', init);
   </script>
 </body>
