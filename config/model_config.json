@@ -1,0 +1,43 @@
+{
+  "default_model": "Qwen/Qwen2.5-32B-Instruct-AWQ",
+  "server": {
+    "host": "0.0.0.0",
+    "port": 8000,
+    "api_key": "vllm-local-token"
+  },
+  "models": {
+    "Qwen/Qwen2.5-32B-Instruct-AWQ": {
+      "description": "32B parameter model quantized to INT4 AWQ. Requires ~18-20 GB VRAM. On single consumer GPU (8GB/12GB), requires CPU offload or tensor/pipeline parallelism across nodes (Phase 2).",
+      "model_id": "Qwen/Qwen2.5-32B-Instruct-AWQ",
+      "quantization": "awq",
+      "max_model_len": 2048,
+      "gpu_memory_utilization": 0.95,
+      "enforce_eager": true,
+      "cpu_offload_gb": 12,
+      "kv_cache_dtype": "auto",
+      "recommended_hardware": "2x GPUs via Ray/Pipeline Parallelism or single GPU >= 24GB VRAM"
+    },
+    "Qwen/Qwen2.5-14B-Instruct-AWQ": {
+      "description": "14B parameter model quantized to INT4 AWQ. Weights ~8.5 GB. Ideal for 12GB VRAM cards.",
+      "model_id": "Qwen/Qwen2.5-14B-Instruct-AWQ",
+      "quantization": "awq",
+      "max_model_len": 4096,
+      "gpu_memory_utilization": 0.90,
+      "enforce_eager": true,
+      "cpu_offload_gb": 0,
+      "kv_cache_dtype": "auto",
+      "recommended_hardware": "Single 12GB GPU (e.g., RTX 4070 / 4070 Ti)"
+    },
+    "Qwen/Qwen2.5-7B-Instruct-AWQ": {
+      "description": "7B parameter model quantized to INT4 AWQ. Weights ~4.5 GB. Perfect single-GPU testing benchmark for 8GB VRAM (RTX 4070 Laptop).",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct-AWQ",
+      "quantization": "awq",
+      "max_model_len": 8192,
+      "gpu_memory_utilization": 0.85,
+      "enforce_eager": false,
+      "cpu_offload_gb": 0,
+      "kv_cache_dtype": "auto",
+      "recommended_hardware": "Single 8GB GPU (e.g., RTX 4070 Laptop / 4060)"
+    }
+  }
+}

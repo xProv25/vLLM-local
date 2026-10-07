@@ -1,0 +1,13 @@
+# Core vLLM Engine (Stable target 0.6.3)
+vllm==0.6.3
+
+# Faster Hugging Face Model Downloads
+hf-transfer>=0.1.8
+huggingface_hub>=0.25.0
+
+# Client & Benchmarking
+openai>=1.50.0
+requests>=2.31.0
+rich>=13.7.0
+pydantic>=2.9.0
+aiohttp>=3.10.0

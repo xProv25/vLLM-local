@@ -1,0 +1,21 @@
+# Place this file at %USERPROFILE%\.wslconfig on Windows 11
+# To apply changes, run in PowerShell:
+#   wsl --shutdown
+# and then restart WSL.
+
+[wsl2]
+# Max memory allocated to WSL2 VM (default is 50% of host RAM)
+# On a 16GB host, 10GB to 12GB gives WSL enough headroom for vLLM & CPU offloading
+memory=12GB
+
+# Swap file size to prevent Out-Of-Memory kernel kills when caching layers
+swap=8GB
+
+# Processors allocated to WSL2 VM
+processors=16
+
+# Enable localhost forwarding to access WSL2 services from Windows host
+localhostForwarding=true
+
+# GPU support configuration
+nestedVirtualization=true
