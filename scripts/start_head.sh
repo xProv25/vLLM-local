@@ -17,6 +17,9 @@ else
     exit 1
 fi
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+python "${SCRIPT_DIR}/patch_ray.py" >/dev/null 2>&1 || true
+
 HEAD_IP="${HEAD_IP:-192.168.1.100}"
 RAY_PORT="${RAY_PORT:-6379}"
 DASHBOARD_PORT="${DASHBOARD_PORT:-8265}"
