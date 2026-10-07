@@ -29,8 +29,10 @@ export CUDA_VISIBLE_DEVICES=0
 
 # Default model configuration
 # Qwen2.5-32B-Instruct-AWQ weights are ~18.5GB.
-# On a single 8GB/12GB GPU, weights exceed VRAM. We provide CPU offload option or fallback models.
 MODEL_NAME="${1:-Qwen/Qwen2.5-32B-Instruct-AWQ}"
+if [[ $# -gt 0 ]]; then
+    shift
+fi
 PORT="${PORT:-8000}"
 HOST="${HOST:-0.0.0.0}"
 MAX_MODEL_LEN="${MAX_MODEL_LEN:-2048}"
