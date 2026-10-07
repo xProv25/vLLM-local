@@ -32,11 +32,11 @@ def check_server_health(base_url: str, api_key: str) -> Optional[Dict[str, Any]]
     url = f"{base_url.rstrip('/')}/v1/models"
     req = urllib.request.Request(url, headers={"Authorization": f"Bearer {api_key}"})
     try:
-        with urllib.request.urlopen(req, timeout=10) as response:
+        with urllib.request.urlopen(req, timeout=3) as response:
             if response.status == 200:
                 data = json.loads(response.read().decode("utf-8"))
                 return data
-    except urllib.error.URLError as e:
+    except (urllib.error.URLError, TimeoutError, OSError) as e:
         print(f"[-] Connection failed to {url}: {e}")
         return None
     return None
